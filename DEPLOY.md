@@ -11,11 +11,20 @@ git add .
 git commit -m "Initial site: portfolio"
 ```
 
-Create a new empty repo on GitHub (e.g. `tanmaykakati.com` or `portfolio`), then:
+Repo: **[tkakati/tanmaykakati_website](https://github.com/tkakati/tanmaykakati_website)**
+
+If `origin` is not set yet:
 
 ```bash
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git remote add origin https://github.com/tkakati/tanmaykakati_website.git
+git push -u origin main
+```
+
+If the remote already exists with another URL:
+
+```bash
+git remote set-url origin https://github.com/tkakati/tanmaykakati_website.git
 git push -u origin main
 ```
 
