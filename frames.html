@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>FRAMES — PM System Design Framework</title>
+    <meta
+      name="description"
+      content="FRAMES — PM System Design Framework. A mental model for designing product systems."
+    />
+    <meta name="theme-color" content="#C9FF1A" />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="topbar" id="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="index.html" aria-label="Home">
+          <span class="brand__mark" aria-hidden="true">✦</span>
+          <span class="brand__text">Tanmay K</span>
+        </a>
+
+        <div class="nav-wrap" id="navWrap">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="megaMenu"
+            data-action="toggleNav"
+          >
+            <span aria-hidden="true">Menu</span>
+          </button>
+
+          <nav class="nav" id="primaryNav" aria-label="Primary">
+            <a class="nav__link" href="projects.html" data-mega-target="projects">Projects</a>
+            <a class="nav__link" href="frameworks.html" data-mega-target="frameworks">Frameworks</a>
+            <a class="nav__link" href="writing.html" data-mega-target="writing">Writing</a>
+          </nav>
+        </div>
+
+        <div class="topbar__cta">
+          <a class="button button--primary" href="index.html#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="mega" id="megaMenu" aria-label="Site navigation">
+        <div class="container mega__inner">
+          <div class="mega__grid">
+            <section class="mega__section" aria-label="Projects" data-mega-section="projects">
+              <h3 class="mega__heading">PROJECTS</h3>
+              <a class="mega__link" href="projects.html#ai">AI</a>
+              <a class="mega__link" href="projects.html#product-teardown">Product Teardown</a>
+            </section>
+            <section class="mega__section" aria-label="Frameworks" data-mega-section="frameworks">
+              <h3 class="mega__heading">FRAMEWORKS</h3>
+              <a class="mega__link" href="frameworks.html#discovery">Discovery</a>
+              <a class="mega__link" href="frameworks.html#decisioning">Decisioning</a>
+              <a class="mega__link" href="frameworks.html#ai-systems">AI Systems</a>
+            </section>
+            <section class="mega__section" aria-label="Writing" data-mega-section="writing">
+              <h3 class="mega__heading">WRITING</h3>
+              <a class="mega__link" href="writing.html#tech-business">Tech &amp; Business</a>
+              <a class="mega__link" href="writing.html#personal">Personal</a>
+            </section>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="framework-visual">
+        <div class="framework-visual__headrow">
+          <h1 class="framework-visual__title">FRAMES — PM System Design Framework</h1>
+          <a
+            class="framework-visual__notion-cta"
+            href="https://www.notion.so/Non-AI-Feature-System-Design-3273bb18cbd980b0a339dd0e5a3c3575?source=copy_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Copy Notion template ↗</a
+          >
+        </div>
+        <p class="framework-visual__strapline">
+          Most effective when the problem can be structured into inputs, logic, and outputs.
+        </p>
+
+        <figure class="framework-visual__hero">
+          <img
+            src="./assets/frames-diagram.png"
+            alt="FRAMES — PM System Design Framework: circular diagram with F, R, A, M, E, S and six surrounding sections."
+            width="1600"
+            height="900"
+            loading="eager"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="framework-visual__steps-wrap">
+          <div class="framework-visual__steps">
+            <article class="framework-step">
+              <span class="framework-step__badge" aria-hidden="true">F</span>
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">Frame the problem</h2>
+                <p class="framework-step__desc">Clarify the user problem and the decision being made.</p>
+                <ul class="framework-step__list">
+                  <li>User problem</li>
+                  <li>Primary user</li>
+                  <li>Journey stage</li>
+                  <li>Decision being made</li>
+                  <li>Desired outcome</li>
+                  <li>Success metric</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <span class="framework-step__badge" aria-hidden="true">R</span>
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">Requirements &amp; constraints</h2>
+                <p class="framework-step__desc">Define what must be true for the system to work.</p>
+                <ul class="framework-step__list">
+                  <li>Functional requirements</li>
+                  <li>Non-functional requirements</li>
+                  <li>Business constraints</li>
+                  <li>UX / trust constraints</li>
+                  <li>Assumptions</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <span class="framework-step__badge" aria-hidden="true">A</span>
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">Actors, assets &amp; architecture</h2>
+                <p class="framework-step__desc">Map system components, dependencies, and what persists.</p>
+                <ul class="framework-step__list">
+                  <li>Actors</li>
+                  <li>Inputs</li>
+                  <li>Stored state / memory</li>
+                  <li>Dependencies</li>
+                  <li>Core components</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <span class="framework-step__badge" aria-hidden="true">M</span>
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">Mechanics &amp; flow</h2>
+                <p class="framework-step__desc">Describe the workflow and logic that produces outputs.</p>
+                <ul class="framework-step__list">
+                  <li>Workflow (numbered steps)</li>
+                  <li>Core logic / decisioning</li>
+                  <li>Outputs</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <span class="framework-step__badge" aria-hidden="true">E</span>
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">Exceptions &amp; tradeoffs</h2>
+                <p class="framework-step__desc">Plan for edge cases, failure modes, and unavoidable tradeoffs.</p>
+                <ul class="framework-step__list">
+                  <li>Failure modes</li>
+                  <li>Edge cases</li>
+                  <li>Fallbacks / safeguards</li>
+                  <li>Tradeoffs</li>
+                  <li>Alternatives considered</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <span class="framework-step__badge" aria-hidden="true">S</span>
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">Success, scale &amp; evolution</h2>
+                <p class="framework-step__desc">Define success now, and how the system changes at scale.</p>
+                <ul class="framework-step__list">
+                  <li>Primary metric</li>
+                  <li>Leading indicators</li>
+                  <li>Scale considerations</li>
+                  <li>Feedback loop</li>
+                  <li>Future evolution</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="framework-visual__when-wrap">
+          <h2 class="framework-visual__when-heading">When to use FRAMES</h2>
+          <div class="framework-visual__when-grid">
+            <div class="framework-when-card">
+              <h3 class="framework-when-card__title">
+                <span class="framework-when-card__icon framework-when-card__icon--yes" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5L7.5 13.5 4 10"/></svg>
+                </span>
+                Works well for
+              </h3>
+              <ul class="framework-when-card__list">
+                <li>Multi-step decision systems (ranking, prioritization)</li>
+                <li>Feature design with clear inputs → outputs</li>
+                <li>Systems requiring tradeoff evaluation</li>
+                <li>Early-stage product design</li>
+                <li>Internal tools / user-driven logic systems</li>
+              </ul>
+            </div>
+            <div class="framework-when-card">
+              <h3 class="framework-when-card__title">
+                <span class="framework-when-card__icon framework-when-card__icon--no" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                </span>
+                Not ideal for
+              </h3>
+              <ul class="framework-when-card__list">
+                <li>Pure exploratory problems</li>
+                <li>Highly creative systems</li>
+                <li>Deep ML-first systems</li>
+                <li>Fully automated pipelines</li>
+                <li>Unstructured problem spaces</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="framework-visual__applied">
+          <h2 class="framework-visual__applied-heading">Applied in practice</h2>
+          <div class="framework-applied-card">
+            <h3 class="framework-applied-card__title">Zillow — Ranking Engine System Design</h3>
+            <p class="framework-applied-card__desc">See how FRAMES is applied to design a real product system.</p>
+            <a
+              class="framework-applied-card__link"
+              href="https://www.notion.so/Ranking-engine-3273bb18cbd9806f89b3ca54c7e3cbc2?source=copy_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View case ↗</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="tiny">© <span id="year"></span> Tanmay K</p>
+        <a class="tiny link" href="index.html">Home</a>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
