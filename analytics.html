@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Analytics Framework</title>
+    <meta
+      name="description"
+      content="Analytics Framework. A structured approach to measuring product outcomes and AI system performance."
+    />
+    <meta name="theme-color" content="#C9FF1A" />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="topbar" id="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="index.html" aria-label="Home">
+          <span class="brand__mark" aria-hidden="true">✦</span>
+          <span class="brand__text">Tanmay K</span>
+        </a>
+
+        <div class="nav-wrap" id="navWrap">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="megaMenu"
+            data-action="toggleNav"
+          >
+            <span aria-hidden="true">Menu</span>
+          </button>
+
+          <nav class="nav" id="primaryNav" aria-label="Primary">
+            <a class="nav__link" href="projects.html" data-mega-target="projects">Projects</a>
+            <a class="nav__link" href="frameworks.html" data-mega-target="frameworks">Frameworks</a>
+            <a class="nav__link" href="writing.html" data-mega-target="writing">Writing</a>
+          </nav>
+        </div>
+
+        <div class="topbar__cta">
+          <a class="button button--primary" href="index.html#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="mega" id="megaMenu" aria-label="Site navigation">
+        <div class="container mega__inner">
+          <div class="mega__grid">
+            <section class="mega__section" aria-label="Projects" data-mega-section="projects">
+              <h3 class="mega__heading">PROJECTS</h3>
+              <a class="mega__link" href="projects.html#ai">AI</a>
+              <a class="mega__link" href="projects.html#product-teardown">Product Teardown</a>
+            </section>
+            <section class="mega__section" aria-label="Frameworks" data-mega-section="frameworks">
+              <h3 class="mega__heading">FRAMEWORKS</h3>
+              <a class="mega__link" href="frameworks.html#discovery">Discovery</a>
+              <a class="mega__link" href="frameworks.html#decisioning">Decisioning</a>
+              <a class="mega__link" href="frameworks.html#ai-systems">AI Systems</a>
+            </section>
+            <section class="mega__section" aria-label="Writing" data-mega-section="writing">
+              <h3 class="mega__heading">WRITING</h3>
+              <a class="mega__link" href="writing.html#tech-business">Tech &amp; Business</a>
+              <a class="mega__link" href="writing.html#personal">Personal</a>
+            </section>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="framework-visual analytics-framework">
+        <div class="framework-visual__headrow">
+          <h1 class="framework-visual__title">Analytics Framework</h1>
+        </div>
+        <p class="framework-visual__strapline">
+          A structured approach to measuring product outcomes and AI system performance.
+        </p>
+        <p class="analytics-helper">Most effective when linking features → behavior → outcomes.</p>
+
+        <div class="framework-visual__steps-wrap analytics-grid-wrap">
+          <div class="analytics-grid">
+            <article class="framework-step">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">1. Objective</h2>
+                <ul class="framework-step__list">
+                  <li>Goal</li>
+                  <li>North Star Metric</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step analytics-span-2">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">2. User Funnel</h2>
+                <div class="analytics-table-wrap">
+                  <table class="analytics-table">
+                    <thead>
+                      <tr>
+                        <th>Stage</th>
+                        <th>User Action</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Discovery</td><td>Finds product/options</td><td>User becomes aware of relevant choices.</td></tr>
+                      <tr><td>Shortlisting</td><td>Filters and saves options</td><td>User narrows options based on needs.</td></tr>
+                      <tr><td>Evaluation</td><td>Compares details</td><td>User validates fit, quality, and tradeoffs.</td></tr>
+                      <tr><td>Decision</td><td>Selects an option</td><td>User commits to a preferred choice.</td></tr>
+                      <tr><td>Commitment</td><td>Completes key action</td><td>User finalizes the intended outcome.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+
+            <article class="framework-step analytics-span-2">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">3. Product Metrics</h2>
+                <div class="analytics-table-wrap">
+                  <table class="analytics-table">
+                    <thead>
+                      <tr>
+                        <th>Metric</th>
+                        <th>Type</th>
+                        <th>Definition</th>
+                        <th>Why it matters</th>
+                        <th>Direction</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Decision conversion rate</td><td>Primary</td><td>% of users reaching commitment</td><td>Direct measure of value delivered</td><td>Increase</td></tr>
+                      <tr><td>Evaluation completion rate</td><td>Secondary</td><td>% users finishing comparison flow</td><td>Shows healthy mid-funnel behavior</td><td>Increase</td></tr>
+                      <tr><td>Regenerate rate</td><td>Diagnostic</td><td>% sessions with repeated retries</td><td>Signals output quality friction</td><td>Decrease</td></tr>
+                      <tr><td>Error rate</td><td>Guardrail</td><td>% failed or invalid responses</td><td>Protects reliability and trust</td><td>Decrease</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="analytics-subblock">
+                  <h3 class="analytics-subtitle">Metric Types</h3>
+                  <ul class="framework-step__list">
+                    <li><strong>Primary</strong> → core success metric</li>
+                    <li><strong>Secondary</strong> → supporting outcomes</li>
+                    <li><strong>Diagnostic</strong> → helps debug behavior</li>
+                    <li><strong>Guardrail</strong> → ensures no negative impact</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">4. Primary Metric</h2>
+                <ul class="framework-step__list">
+                  <li>Metric</li>
+                  <li>Definition</li>
+                  <li>Why it matters</li>
+                  <li>Expected impact</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">5. Secondary Metrics</h2>
+                <ul class="framework-step__list">
+                  <li>Metric</li>
+                  <li>Definition</li>
+                  <li>Why it matters</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">6. Diagnostic Metrics</h2>
+                <ul class="framework-step__list">
+                  <li>Feature usage</li>
+                  <li>Drop-off rates</li>
+                  <li>Regenerate rate</li>
+                  <li>Step-level conversions</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">7. Guardrail Metrics</h2>
+                <ul class="framework-step__list">
+                  <li>Trust / repeat usage</li>
+                  <li>Error rate</li>
+                  <li>Latency</li>
+                  <li>User satisfaction</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step analytics-span-2">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">8. Metric Relationships</h2>
+                <div class="analytics-flow">
+                  <span class="analytics-flow__node">Feature improvement</span>
+                  <span class="analytics-flow__arrow">→</span>
+                  <span class="analytics-flow__node">User behavior change</span>
+                  <span class="analytics-flow__arrow">→</span>
+                  <span class="analytics-flow__node">Intermediate outcome</span>
+                  <span class="analytics-flow__arrow">→</span>
+                  <span class="analytics-flow__node">Final outcome</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">9. Measurement Strategy</h2>
+                <h3 class="analytics-subtitle">Data sources</h3>
+                <ul class="framework-step__list">
+                  <li>Event logs</li>
+                  <li>User actions</li>
+                  <li>Session data</li>
+                </ul>
+                <h3 class="analytics-subtitle">Tracking approach</h3>
+                <ul class="framework-step__list">
+                  <li>Event-based tracking</li>
+                  <li>Funnel analysis</li>
+                  <li>Cohort analysis</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">10. Success Criteria</h2>
+                <ul class="framework-step__list">
+                  <li>Metric improvement targets</li>
+                  <li>Behavioral shifts</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="framework-step analytics-span-2">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">11. System &amp; LLM Performance Metrics</h2>
+                <div class="analytics-grid analytics-grid--inner">
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">A. Quality</h3>
+                    <ul class="framework-step__list">
+                      <li>Relevance</li>
+                      <li>Groundedness</li>
+                      <li>Consistency</li>
+                      <li>Tradeoff accuracy</li>
+                    </ul>
+                  </div>
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">B. Reliability</h3>
+                    <ul class="framework-step__list">
+                      <li>Hallucination rate</li>
+                      <li>Invalid output rate</li>
+                      <li>Retry rate</li>
+                    </ul>
+                  </div>
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">C. Latency &amp; Cost</h3>
+                    <ul class="framework-step__list">
+                      <li>Response latency</li>
+                      <li>Token usage</li>
+                      <li>Cost per response</li>
+                    </ul>
+                  </div>
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">D. Guardrails</h3>
+                    <ul class="framework-step__list">
+                      <li>Safety violation rate</li>
+                      <li>Tone adherence</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="framework-step analytics-span-2">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">12. Evaluation Strategy</h2>
+                <div class="analytics-grid analytics-grid--inner">
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">Offline</h3>
+                    <ul class="framework-step__list">
+                      <li>Curated test cases</li>
+                      <li>Edge cases</li>
+                      <li>Human evaluation</li>
+                      <li>Prompt testing</li>
+                    </ul>
+                  </div>
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">Online</h3>
+                    <ul class="framework-step__list">
+                      <li>A/B testing</li>
+                      <li>User feedback</li>
+                      <li>Regenerate behavior</li>
+                      <li>Conversion impact</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="framework-step analytics-span-2">
+              <div class="framework-step__body">
+                <h2 class="framework-step__title">13. System Interfaces (Optional)</h2>
+                <div class="analytics-grid analytics-grid--inner">
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">1. Ranking Service</h3>
+                    <ul class="framework-step__list">
+                      <li>Input: User context, item features</li>
+                      <li>Output: Ordered candidates</li>
+                      <li>Role: Prioritize relevant options</li>
+                    </ul>
+                  </div>
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">2. Comparison Builder</h3>
+                    <ul class="framework-step__list">
+                      <li>Input: Ranked options, attributes</li>
+                      <li>Output: Structured comparison view</li>
+                      <li>Role: Support informed evaluation</li>
+                    </ul>
+                  </div>
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">3. LLM Service</h3>
+                    <ul class="framework-step__list">
+                      <li>Input: Prompt, context, constraints</li>
+                      <li>Output: Natural-language guidance</li>
+                      <li>Role: Explain and summarize tradeoffs</li>
+                    </ul>
+                  </div>
+                  <div class="analytics-subcard">
+                    <h3 class="analytics-subtitle">4. Validation Layer</h3>
+                    <ul class="framework-step__list">
+                      <li>Input: LLM outputs, policy rules</li>
+                      <li>Output: Safe, compliant response</li>
+                      <li>Role: Enforce reliability and safety</li>
+                    </ul>
+                  </div>
+                  <div class="analytics-subcard analytics-subcard--wide">
+                    <h3 class="analytics-subtitle">5. Logging / Analytics</h3>
+                    <ul class="framework-step__list">
+                      <li>Input: Events across the full funnel</li>
+                      <li>Output: Dashboards and diagnostics</li>
+                      <li>Role: Measure outcomes and iterate</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="framework-visual__when-wrap">
+          <h2 class="framework-visual__when-heading">When to use Analytics Framework</h2>
+          <div class="framework-visual__when-grid">
+            <div class="framework-when-card">
+              <h3 class="framework-when-card__title">Works well for</h3>
+              <ul class="framework-when-card__list">
+                <li>AI-enabled products</li>
+                <li>Funnel-driven products</li>
+                <li>Decision-support systems</li>
+                <li>Systems with measurable outcomes</li>
+              </ul>
+            </div>
+            <div class="framework-when-card">
+              <h3 class="framework-when-card__title">Not ideal for</h3>
+              <ul class="framework-when-card__list">
+                <li>Pure exploratory systems</li>
+                <li>Early ideation phases</li>
+                <li>Highly creative workflows</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="framework-visual__applied">
+          <h2 class="framework-visual__applied-heading">Applied in practice</h2>
+          <div class="framework-applied-card">
+            <h3 class="framework-applied-card__title">Zillow — Decision Tracker Analytics</h3>
+            <p class="framework-applied-card__desc">
+              See how this framework is applied to measure decision-making and conversion.
+            </p>
+            <a
+              class="framework-applied-card__link"
+              href="https://www.notion.so/Analytics-Zillow-Decision-Space-3283bb18cbd980f4a551d5b0dfe47828?source=copy_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Case -></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p class="tiny">© <span id="year"></span> Tanmay K</p>
+        <a class="tiny link" href="index.html">Home</a>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

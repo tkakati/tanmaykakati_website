@@ -108,40 +108,13 @@ const modalContent = document.getElementById("modalContent");
 /** Projects: demo = live app/prototype, caseStudy = Notion or document. Both open in new tab. */
 const PROJECTS = [
   {
-    id: "ats",
-    title: "ATS-First Job Crawler",
-    category: "AI",
-    summary: "Job pipeline that pulls from company ATS endpoints—deterministic and export-ready for ranking and fit scoring.",
-    tags: ["AI enablement", "Data pipeline", "Growth ops"],
-    demo: "#",
-    caseStudy: "#project-ats",
-  },
-  {
-    id: "xray",
-    title: "X-Ray Hiring Collector",
-    category: "AI",
-    summary: "Turns scattered hiring signals into structured notes so you can triage and decide faster.",
-    tags: ["Strategy", "Automation", "AI workflows"],
-    demo: "#",
-    caseStudy: "#project-xray",
-  },
-  {
     id: "zillow",
-    title: "Zillow Decision Tracker",
+    title: "Decision Intelligence for Renters",
     category: "AI",
-    summary: "PRD and decision tracker with trade-off summaries—structure product decisions and capture rationale in one place.",
-    tags: ["Decision tracking", "Trade-offs", "PRD", "Product"],
+    summary: "A decision workspace that ranks listings, surfaces tradeoffs, and uses AI to explain what matters and why.",
+    tags: ["LLM", "Deterministic", "Tradeoffs"],
     demo: "https://zillow-decision-dashboard-yog2.vercel.app/",
     caseStudy: "https://www.notion.so/PRD-Decision-Tracker-with-Trade-off-Summaries-Zillow-2f43bb18cbd9800285bad7477491ea8e?source=copy_link",
-  },
-  {
-    id: "teardown",
-    title: "Product Teardown: Discovery UX",
-    category: "Product Teardown",
-    summary: "Structured teardown of discovery flows and how they affect conversion and trust.",
-    tags: ["Product", "UX"],
-    demo: "#",
-    caseStudy: "#",
   },
 ];
 
@@ -205,6 +178,18 @@ var FRAMEWORKS = [
     ],
     link: "llm_sys_des.html",
   },
+  {
+    title: "Analytics Framework",
+    category: "ai-systems",
+    description: "Measure what matters across product outcomes and AI system performance.",
+    steps: [
+      "Define success clearly",
+      "Track user behavior across the funnel",
+      "Measure system and LLM performance",
+      "Evaluate impact and iterate",
+    ],
+    link: "analytics.html",
+  },
 ];
 
 function renderFrameworksGrid() {
@@ -216,10 +201,9 @@ function renderFrameworksGrid() {
     }).join("");
     return (
       '<article class="card card--framework" data-filter="' + escapeHtml(f.category) + '" data-link="' + escapeHtml(f.link) + '" tabindex="0" role="link" aria-label="' + escapeHtml(f.title) + '">' +
-        '<h3 class="framework-card__title">' + escapeHtml(f.title) + "</h3>" +
+        '<h3 class="framework-card__title"><a class="framework-card__title-link" href="' + escapeHtml(f.link) + '">' + escapeHtml(f.title) + "</a></h3>" +
         '<p class="framework-card__desc">' + escapeHtml(f.description) + "</p>" +
         '<ul class="bullets bullets--tight">' + stepsHtml + "</ul>" +
-        '<a class="card__view-link" href="' + escapeHtml(f.link) + '">View framework →</a>' +
       "</article>"
     );
   }).join("");
@@ -548,6 +532,14 @@ function initFrameworkFilters() {
 
 function initProjectsPage() {
   renderProjectsGrid();
+  var cta = document.getElementById("viewAllProjectsCta");
+  if (cta) {
+    var path = window.location.pathname || "";
+    var isHome = path === "" || path === "/" || /index\.html$/i.test(path);
+    if (isHome) {
+      cta.style.display = PROJECTS.length > 3 ? "inline-block" : "none";
+    }
+  }
   initProjectFilters();
 }
 function initFrameworksPage() {
