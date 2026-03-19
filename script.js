@@ -212,12 +212,13 @@ function renderFrameworksGrid() {
 
 /** Writing: category slug "tech-business" or "personal" for filtering. */
 var WRITING_POSTS = [
-  { title: "When to ship an AI feature", category: "tech-business", description: "How to decide if an AI feature is ready for users—and when to wait.", date: "2024", link: "#" },
-  { title: "Product strategy under uncertainty", category: "tech-business", description: "Frameworks for making decisions when the ground is shifting.", date: "2024", link: "#" },
-  { title: "Career reflections after an MBA", category: "personal", description: "What changed in how I think about work and what’s next.", date: "2024", link: "#" },
-  { title: "Economics of platform decisions", category: "tech-business", description: "Why platforms choose the rules they do, and who pays.", date: "2023", link: "#" },
-  { title: "Travel notes: building in public", category: "personal", description: "Working from the road and what I’d do differently.", date: "2023", link: "#" },
-  { title: "General thoughts on tradeoffs", category: "personal", description: "On saying no, and being okay with it.", date: "2023", link: "#" },
+  {
+    title: "AI Is Rarely the Product. It’s Usually the Cost Center.",
+    category: "tech-business",
+    description: "Most AI demos look impressive. In production, the costs and complexity show up first.",
+    date: "3 min read",
+    link: "ai_cost_center.html",
+  },
 ];
 
 function renderWritingGrid() {
@@ -226,12 +227,14 @@ function renderWritingGrid() {
   var html = WRITING_POSTS.map(function (post) {
     var link = post.link || "#";
     return (
-      '<article class="writing-item" data-filter="' + escapeHtml(post.category) + '">' +
-        '<h3 class="writing-item__title">' + escapeHtml(post.title) + "</h3>" +
-        (post.description ? '<p class="writing-item__description">' + escapeHtml(post.description) + "</p>" : "") +
-        '<div class="writing-item__meta">' +
-          (post.date ? '<span class="writing-item__date">' + escapeHtml(post.date) + "</span>" : "") +
-          '<a class="writing-item__link" href="' + escapeHtml(link) + '">Read →</a>' +
+      '<article class="writing-item" data-filter="' + escapeHtml(post.category) + '" data-link="' + escapeHtml(link) + '" tabindex="0" role="link" aria-label="' + escapeHtml(post.title) + '">' +
+        '<div class="writing-item__card">' +
+          '<div class="writing-item__meta-row">' +
+            '<span class="writing-item__meta-cat">Essay / Opinion</span>' +
+            (post.date ? '<span class="writing-item__meta-sep" aria-hidden="true">•</span><span class="writing-item__meta-read">' + escapeHtml(post.date) + "</span>" : "") +
+          "</div>" +
+          '<h3 class="writing-item__title"><a class="writing-item__title-link" href="' + escapeHtml(link) + '">' + escapeHtml(post.title) + "</a></h3>" +
+          (post.description ? '<p class="writing-item__description">' + escapeHtml(post.description) + "</p>" : "") +
         "</div>" +
       "</article>"
     );
@@ -665,6 +668,26 @@ function initWritingFilters() {
 function initWritingPage() {
   renderWritingGrid();
   initWritingFilters();
+
+  var grid = document.getElementById("writingGrid");
+  if (!grid) return;
+
+  grid.addEventListener("click", function (e) {
+    var card = e.target && e.target.closest ? e.target.closest(".writing-item[data-link]") : null;
+    if (!card) return;
+    if (e.target && e.target.closest && e.target.closest("a")) return;
+    var href = card.getAttribute("data-link") || "";
+    if (href) window.location.href = href;
+  });
+
+  grid.addEventListener("keydown", function (e) {
+    if (!(e.key === "Enter" || e.key === " ")) return;
+    var card = e.target && e.target.closest ? e.target.closest(".writing-item[data-link]") : null;
+    if (!card) return;
+    e.preventDefault();
+    var href = card.getAttribute("data-link") || "";
+    if (href) window.location.href = href;
+  });
 }
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", function () {

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>AI Is Rarely the Product. It’s Usually the Cost Center. — Writing</title>
+    <meta
+      name="description"
+      content="A short, thoughtful essay on why AI rarely wins as the product—and why it usually belongs inside the workflow."
+    />
+
+    <script>
+      // Tailwind CDN: set config before the CDN script loads.
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: "#C9FF1A",
+              accentMuted: "#6AA84F",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #fcfcfa;
+        color: #111111;
+      }
+      .pull-quote {
+        border-left: 4px solid rgba(106, 168, 79, 0.85);
+        padding-left: 1.1rem;
+        padding-right: 0.75rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { createRoot } = ReactDOM;
+
+      function PullQuote({ children }) {
+        return (
+          <blockquote className="my-12 border-l border-l-accentMuted/70 pl-4 pr-2 font-serif italic text-[1.18rem] leading-relaxed text-zinc-900">
+            {children}
+          </blockquote>
+        );
+      }
+
+      function EditorialDivider() {
+        return (
+          <div className="my-12 h-px w-full bg-zinc-200/80" />
+        );
+      }
+
+      function ArticleCard({ title, children }) {
+        return (
+          <div className="my-12 rounded-xl border border-zinc-200/80 px-6 py-5">
+            <div className="text-sm font-semibold tracking-wide text-zinc-700">{title}</div>
+            <div className="mt-3 text-zinc-800 leading-relaxed">{children}</div>
+          </div>
+        );
+      }
+
+      function WorkflowBlock() {
+        return (
+          <div className="my-12 rounded-xl border border-zinc-200/80 px-6 py-6">
+            <div className="text-sm font-semibold tracking-wide text-zinc-700">AI as product vs AI inside workflow</div>
+            <div className="mt-5 grid gap-8 sm:grid-cols-2">
+              <div>
+                <div className="text-sm font-semibold text-zinc-900">AI as product</div>
+                <p className="mt-2 text-zinc-700 leading-relaxed">
+                  You’re selling novelty. If the magic is the point, the benchmark becomes “wow”—
+                  and “wow” fades fast.
+                </p>
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-zinc-900">AI inside workflow</div>
+                <p className="mt-2 text-zinc-700 leading-relaxed">
+                  You’re selling outcomes. The model is a component. The product is the experience:
+                  faster work, fewer mistakes, less friction.
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      function PeopleBuyCallout() {
+        return (
+          <div className="my-14">
+            <p className="font-serif text-[1.35rem] leading-snug text-zinc-900">People don’t buy AI.</p>
+            <p className="mt-3 text-sm font-semibold tracking-wide text-zinc-500 uppercase">They buy:</p>
+            <p className="mt-4 text-zinc-900 font-medium">
+              faster work<br />
+              fewer mistakes<br />
+              less friction
+            </p>
+          </div>
+        );
+      }
+
+      function NewsletterArticle() {
+        var _a = React.useState(0), progress = _a[0], setProgress = _a[1];
+
+        React.useEffect(function () {
+          function update() {
+            var el = document.documentElement;
+            var scrollTop = window.pageYOffset || el.scrollTop || 0;
+            var scrollHeight = el.scrollHeight - el.clientHeight;
+            var p = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+            setProgress(Math.min(1, Math.max(0, p)));
+          }
+
+          update();
+          window.addEventListener("scroll", update, { passive: true });
+          return function () {
+            window.removeEventListener("scroll", update);
+          };
+        }, []);
+
+        return (
+          <div className="min-h-screen">
+            <div className="sticky top-0 z-30 h-[3px] w-full bg-transparent">
+              <div
+                className="h-full bg-accent/90"
+                style={{ width: Math.max(progress * 100, 2) + "%" }}
+              />
+            </div>
+
+            <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-10">
+              <div className="flex items-center justify-start">
+                <a
+                  href="writing.html"
+                  className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
+                >
+                  ← Back to writings
+                </a>
+              </div>
+
+              <h1 className="mt-6 font-serif text-4xl sm:text-5xl leading-tight tracking-tight text-zinc-900">
+                AI Is Rarely the Product. It’s Usually the Cost Center.
+              </h1>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-zinc-600">
+                <span className="rounded-full border border-zinc-200 bg-white px-3 py-1">Essay / Opinion</span>
+                <span aria-hidden="true" className="text-zinc-400">·</span>
+                <span className="font-medium text-zinc-700">3 min read</span>
+              </div>
+
+              <p className="mt-5 text-lg sm:text-xl text-zinc-700 leading-relaxed">
+                The demo sells the magic. The workflow decides if it survives.
+              </p>
+
+              <article className="mt-10">
+                <p className="text-zinc-800 leading-relaxed">
+                  Most AI products win the first five minutes.
+                </p>
+                <p className="mt-5 text-zinc-800 leading-relaxed">
+                  They lose the next six months.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  You paste in some data, ask a clever question, and the output feels almost uncanny. The room nods.
+                  Someone says this could change everything.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Then the demo gets wired into a real system. Latency creeps in. Costs spike. Edge cases appear.
+                  Usage drops once the novelty wears off. Six months later, the feature still exists, but it’s no
+                  longer the reason anyone buys the product.
+                </p>
+
+                <PullQuote>If AI is the product, it gets judged on novelty. And novelty fades.</PullQuote>
+
+                <p className="text-zinc-800 leading-relaxed">
+                  My bias is simple: the AI that works best is usually invisible. It sits inside a workflow, doing something
+                  narrow and unglamorous—drafting a first query, routing a support ticket, flagging an anomaly before someone
+                  notices manually.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Users don’t talk about it much. They just notice their job takes less effort than it used to.
+                </p>
+
+                <PullQuote>The best AI is invisible.</PullQuote>
+
+                <EditorialDivider />
+
+                <p className="text-zinc-800 leading-relaxed">
+                  A feature is judged by whether it reinforces the core value of the product—not whether it&apos;s impressive on
+                  its own. When you treat AI like the product, the benchmark becomes novelty. When you treat it like a component,
+                  the benchmark becomes outcomes.
+                </p>
+
+                <ArticleCard title="Demo magic → production reality">
+                  Speed matters. Trust matters. Integration matters. If the workflow is solid, the model can be “just good.”
+                  If the workflow is weak, even a better model won’t save the experience.
+                </ArticleCard>
+
+                <p className="text-zinc-800 leading-relaxed">
+                  Consider analytics tools. Teams don’t buy them because a model can generate a paragraph of insight.
+                  They buy them because reports go out faster, dashboards are more reliable, and fewer things break at the end of the quarter.
+                </p>
+
+                <PullQuote>People don’t pay for intelligence. They pay for outcomes.</PullQuote>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The same pattern shows up in customer support. Auto-generated responses can sound impressive in isolation.
+                  In production, what matters is resolution time, escalation accuracy, and whether agents trust what they&apos;re seeing.
+                </p>
+
+                <PeopleBuyCallout />
+
+                <WorkflowBlock />
+
+                <p className="text-zinc-800 leading-relaxed">
+                  There are counterexamples worth acknowledging. In a small number of cases, AI really is the product:
+                  dictation for speech recognition, image generation for creative exploration. People show up for the capability itself,
+                  and they tolerate rough edges because the alternative is worse.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Even then, winners tend to pair the model with strong distribution and clear use cases—not just raw performance.
+                </p>
+
+                <PullQuote>AI doesn’t need to be impressive. It needs to be useful.</PullQuote>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Most business software doesn’t exist to showcase intelligence. It exists to reduce friction in messy, human workflows.
+                  In that environment, AI often behaves like a cost center: compute costs, monitoring, human oversight.
+                  Customers rarely say they&apos;re willing to pay more just because a feature is powered by AI.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The mistake I see most often is conceptual, not technical. Teams fall in love with what the AI can do in isolation
+                  and forget to ask where it sits in the system. They optimize the demo instead of the workflow.
+                  They price the magic instead of the outcome.
+                </p>
+
+                <EditorialDivider />
+
+                <p className="text-zinc-800 leading-relaxed">
+                  None of this means AI is unimportant. It means it should be treated with the same discipline as any other costly component.
+                  Used well, it can shift the efficiency of an organization. Used poorly, it becomes complexity nobody quite trusts.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  AI doesn’t need to be impressive.<br />
+                  It needs to be useful.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  And most of the time, usefulness looks boring.
+                </p>
+              </article>
+            </div>
+          </div>
+        );
+      }
+
+      createRoot(document.getElementById("root")).render(<NewsletterArticle />);
+    </script>
+  </body>
+</html>
+
