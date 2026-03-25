@@ -219,6 +219,14 @@ var WRITING_POSTS = [
     date: "3 min read",
     link: "ai_cost_center.html",
   },
+  {
+    title: "Workflows First. Agents Second.",
+    category: "tech-business",
+    description:
+      "Most AI demos feel magical. You type something vague; the system figures out what to do.",
+    date: "3 min read",
+    link: "workflows_first_agents_second.html",
+  },
 ];
 
 function renderWritingGrid() {
