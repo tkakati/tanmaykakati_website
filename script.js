@@ -108,17 +108,8 @@ const modalContent = document.getElementById("modalContent");
 /** Projects: demo = live app/prototype, caseStudy = Notion or document. Both open in new tab. */
 const PROJECTS = [
   {
-    id: "zillow",
-    title: "Decision Intelligence for Renters",
-    category: "AI",
-    summary: "A decision workspace that ranks listings, surfaces tradeoffs, and uses AI to explain what matters and why.",
-    tags: ["LLM", "Deterministic", "Tradeoffs"],
-    demo: "https://zillow-decision-dashboard-yog2.vercel.app/",
-    caseStudy: "https://www.notion.so/PRD-Decision-Tracker-with-Trade-off-Summaries-Zillow-2f43bb18cbd9800285bad7477491ea8e?source=copy_link",
-  },
-  {
     id: "hirefeed",
-    title: "HireFeed — Hiring Post Discovery",
+    title: "HireFeed: Hiring Post Discovery",
     category: "AI",
     summary:
       "An agentic system that discovers hiring posts from the open web, extracts structured signals, ranks opportunities, and enables fast, contextual outreach.",
@@ -126,6 +117,15 @@ const PROJECTS = [
     demo: "https://jobpostdiscovery.vercel.app/home",
     caseStudy:
       "https://www.notion.so/HireFeed-Find-Hiring-Posts-32f3bb18cbd980b8986deb19c89d273f?source=copy_link",
+  },
+  {
+    id: "zillow",
+    title: "Decision Intelligence for Renters",
+    category: "AI",
+    summary: "A decision workspace that ranks listings, surfaces tradeoffs, and uses AI to explain what matters and why.",
+    tags: ["LLM", "Deterministic", "Tradeoffs"],
+    demo: "https://zillow-decision-dashboard-yog2.vercel.app/",
+    caseStudy: "https://www.notion.so/PRD-Decision-Tracker-with-Trade-off-Summaries-Zillow-2f43bb18cbd9800285bad7477491ea8e?source=copy_link",
   },
 ];
 
@@ -152,8 +152,8 @@ function renderProjectsGrid() {
     var demoUrl = p.demo || "#";
     var targetAttr = ' target="_blank" rel="noopener noreferrer"';
     var ctasHtml =
-      '<a class="card__cta card__cta--primary" href="' + escapeHtml(caseStudyUrl) + '"' + targetAttr + '>View case study →</a>' +
-      '<a class="card__cta card__cta--secondary" href="' + escapeHtml(demoUrl) + '"' + targetAttr + '>View demo →</a>';
+      '<a class="card__cta card__cta--primary" href="' + escapeHtml(caseStudyUrl) + '"' + targetAttr + '>View demo →</a>' +
+      '<a class="card__cta card__cta--secondary" href="' + escapeHtml(demoUrl) + '"' + targetAttr + '>View case study →</a>';
     return (
       '<article class="card card--project" data-filter="' + escapeHtml(slug) + '">' +
         '<div class="card__top">' +
