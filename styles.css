@@ -1159,10 +1159,22 @@ a.card__title-link:focus{ outline: none; box-shadow: var(--ring); }
   color: var(--ink);
   text-decoration: underline;
 }
+.framework-applied-card__eyebrow{
+  margin: 0 0 0.6rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: rgba(17,17,17,.48);
+}
 
 /* Analytics Framework page */
 .analytics-framework{
   background: #FAFAFA;
+}
+.agentic-analytics-framework{
+  background: #FFFFFF;
+}
+.agentic-analytics-framework .framework-applied-card:hover{
+  box-shadow: none;
 }
 .analytics-helper{
   max-width: 1120px;

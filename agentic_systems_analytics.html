@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <title>Analytics Framework</title>
+    <title>Agentic Systems Analytics Framework</title>
     <meta
       name="description"
-      content="Analytics Framework. A structured approach to measuring product outcomes and AI system performance."
+      content="Agentic Systems Analytics Framework. A structured approach to measuring decision quality, loop efficiency, reliability, and outcome alignment in agentic systems."
     />
     <meta name="theme-color" content="#C9FF1A" />
 
@@ -72,21 +72,21 @@
     </header>
 
     <main id="content">
-      <section class="framework-visual analytics-framework">
+      <section class="framework-visual analytics-framework agentic-analytics-framework">
         <div class="framework-visual__headrow">
-          <h1 class="framework-visual__title">Analytics Framework</h1>
+          <h1 class="framework-visual__title">Agentic Systems Analytics Framework</h1>
           <a
             class="llm-visual__notion-cta"
-            href="https://www.notion.so/Product-Analytics-with-LLM-systems-3283bb18cbd980dc9593eaabda1f87fa?source=copy_link"
+            href="https://www.notion.so/Agentic-Systems-Analytics-Framework-32f3bb18cbd980139c5dd93e41c648a7?source=copy_link"
             target="_blank"
             rel="noopener noreferrer"
             >Copy Notion template ↗</a
           >
         </div>
         <p class="framework-visual__strapline">
-          A structured approach to measuring product outcomes and AI system performance.
+          A structured approach to measuring decision quality, loop efficiency, reliability, and outcome alignment in agentic systems.
         </p>
-        <p class="analytics-helper">Most effective when linking features → behavior → outcomes.</p>
+        <p class="analytics-helper">Most effective when linking system state &rarr; decisions &rarr; execution &rarr; outcomes.</p>
 
         <div class="framework-visual__steps-wrap analytics-grid-wrap">
           <div class="analytics-grid">
@@ -94,78 +94,88 @@
               <div class="framework-step__body">
                 <h2 class="framework-step__title">1. Objective</h2>
                 <ul class="framework-step__list">
-                  <li>Goal</li>
-                  <li>North Star Metric</li>
+                  <li>Define the system outcome that matters most.</li>
+                  <li>Set one primary metric for value delivery.</li>
+                  <li>Use secondary, diagnostic, and guardrail metrics to explain movement.</li>
                 </ul>
               </div>
             </article>
 
             <article class="framework-step analytics-span-2">
               <div class="framework-step__body">
-                <h2 class="framework-step__title">2. User Funnel</h2>
+                <h2 class="framework-step__title">2. System Loop Model</h2>
                 <div class="analytics-table-wrap">
                   <table class="analytics-table">
                     <thead>
                       <tr>
                         <th>Stage</th>
-                        <th>User Action</th>
-                        <th>Description</th>
+                        <th>What happens</th>
+                        <th>Why it matters</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><td>Discovery</td><td>Finds product/options</td><td>User becomes aware of relevant choices.</td></tr>
-                      <tr><td>Shortlisting</td><td>Filters and saves options</td><td>User narrows options based on needs.</td></tr>
-                      <tr><td>Evaluation</td><td>Compares details</td><td>User validates fit, quality, and tradeoffs.</td></tr>
-                      <tr><td>Decision</td><td>Selects an option</td><td>User commits to a preferred choice.</td></tr>
-                      <tr><td>Commitment</td><td>Completes key action</td><td>User finalizes the intended outcome.</td></tr>
+                      <tr><td>Planner</td><td>Transforms state and goals into an executable plan.</td><td>Sets direction and limits wasted actions.</td></tr>
+                      <tr><td>Execution</td><td>Runs tools, APIs, and actions defined by the plan.</td><td>Turns decisions into measurable system behavior.</td></tr>
+                      <tr><td>Evaluation</td><td>Checks outputs against quality, policy, and task criteria.</td><td>Separates useful outputs from noisy ones.</td></tr>
+                      <tr><td>Decision</td><td>Selects next action: continue, revise, retry, or stop.</td><td>Controls loop quality, speed, and cost.</td></tr>
+                      <tr><td>Loop</td><td>Updates state and repeats until stop conditions are met.</td><td>Determines final outcome consistency over time.</td></tr>
                     </tbody>
                   </table>
+                </div>
+                <div class="analytics-subblock">
+                  <div class="analytics-flow">
+                    <span class="analytics-flow__node">System state</span>
+                    <span class="analytics-flow__arrow">&rarr;</span>
+                    <span class="analytics-flow__node">Planner</span>
+                    <span class="analytics-flow__arrow">&rarr;</span>
+                    <span class="analytics-flow__node">Execution</span>
+                    <span class="analytics-flow__arrow">&rarr;</span>
+                    <span class="analytics-flow__node">Evaluation</span>
+                    <span class="analytics-flow__arrow">&rarr;</span>
+                    <span class="analytics-flow__node">Decision</span>
+                    <span class="analytics-flow__arrow">&rarr;</span>
+                    <span class="analytics-flow__node">Loop</span>
+                  </div>
                 </div>
               </div>
             </article>
 
             <article class="framework-step analytics-span-2">
               <div class="framework-step__body">
-                <h2 class="framework-step__title">3. Product Metrics</h2>
+                <h2 class="framework-step__title">3. Core Dimensions</h2>
                 <div class="analytics-table-wrap">
                   <table class="analytics-table">
                     <thead>
                       <tr>
-                        <th>Metric</th>
-                        <th>Type</th>
-                        <th>Definition</th>
-                        <th>Why it matters</th>
-                        <th>Direction</th>
+                        <th>Dimension</th>
+                        <th>What it measures</th>
+                        <th>Example questions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><td>Decision conversion rate</td><td>Primary</td><td>% of users reaching commitment</td><td>Direct measure of value delivered</td><td>Increase</td></tr>
-                      <tr><td>Evaluation completion rate</td><td>Secondary</td><td>% users finishing comparison flow</td><td>Shows healthy mid-funnel behavior</td><td>Increase</td></tr>
-                      <tr><td>Regenerate rate</td><td>Diagnostic</td><td>% sessions with repeated retries</td><td>Signals output quality friction</td><td>Decrease</td></tr>
-                      <tr><td>Error rate</td><td>Guardrail</td><td>% failed or invalid responses</td><td>Protects reliability and trust</td><td>Decrease</td></tr>
+                      <tr><td>Planner Intelligence</td><td>Quality of plan selection under constraints.</td><td>Are plans coherent and goal-aligned on first pass?</td></tr>
+                      <tr><td>Execution Efficiency</td><td>Speed and resource use while executing actions.</td><td>How many steps are required to complete the task?</td></tr>
+                      <tr><td>Retrieval / Search Quality</td><td>Relevance and completeness of fetched evidence.</td><td>Did retrieval surface the right context at decision time?</td></tr>
+                      <tr><td>Transformation Quality</td><td>Accuracy of transformations, summaries, and structuring.</td><td>Is transformed output faithful to source inputs?</td></tr>
+                      <tr><td>Selection / Ranking</td><td>Quality of prioritization among available options.</td><td>Does ranking surface the highest-value output first?</td></tr>
+                      <tr><td>Loop Efficiency</td><td>Iterations needed to reach a valid stop condition.</td><td>Are loops converging quickly or cycling?</td></tr>
+                      <tr><td>Reliability &amp; Safety</td><td>Error, failure, and policy compliance behavior.</td><td>How often does the system fail or violate constraints?</td></tr>
+                      <tr><td>Cost &amp; Latency</td><td>Time and spend required per successful outcome.</td><td>Is performance acceptable at target load and budget?</td></tr>
+                      <tr><td>Outcome Alignment</td><td>Match between system outputs and business outcomes.</td><td>Do better outputs produce better real outcomes?</td></tr>
                     </tbody>
                   </table>
-                </div>
-                <div class="analytics-subblock">
-                  <h3 class="analytics-subtitle">Metric Types</h3>
-                  <ul class="framework-step__list">
-                    <li><strong>Primary</strong> → core success metric</li>
-                    <li><strong>Secondary</strong> → supporting outcomes</li>
-                    <li><strong>Diagnostic</strong> → helps debug behavior</li>
-                    <li><strong>Guardrail</strong> → ensures no negative impact</li>
-                  </ul>
                 </div>
               </div>
             </article>
 
             <article class="framework-step">
               <div class="framework-step__body">
-                <h2 class="framework-step__title">4. Primary Metric</h2>
+                <h2 class="framework-step__title">4. Primary System Metric</h2>
                 <ul class="framework-step__list">
-                  <li>Metric</li>
-                  <li>Definition</li>
-                  <li>Why it matters</li>
-                  <li>Expected impact</li>
+                  <li><strong>Outcome-aligned task success rate</strong></li>
+                  <li>Definition: share of loops that reach a valid, useful end state.</li>
+                  <li>Why it matters: ties system behavior to delivered value.</li>
+                  <li>Target: improve quality without increasing failure cost.</li>
                 </ul>
               </div>
             </article>
@@ -174,9 +184,10 @@
               <div class="framework-step__body">
                 <h2 class="framework-step__title">5. Secondary Metrics</h2>
                 <ul class="framework-step__list">
-                  <li>Metric</li>
-                  <li>Definition</li>
-                  <li>Why it matters</li>
+                  <li>Planner first-pass acceptance rate</li>
+                  <li>Execution completion rate</li>
+                  <li>Evaluation pass rate</li>
+                  <li>User acceptance / downstream adoption rate</li>
                 </ul>
               </div>
             </article>
@@ -185,10 +196,10 @@
               <div class="framework-step__body">
                 <h2 class="framework-step__title">6. Diagnostic Metrics</h2>
                 <ul class="framework-step__list">
-                  <li>Feature usage</li>
-                  <li>Drop-off rates</li>
-                  <li>Regenerate rate</li>
-                  <li>Step-level conversions</li>
+                  <li>Average loop count per completed task</li>
+                  <li>Retry and rollback rate</li>
+                  <li>Tool-call error distribution</li>
+                  <li>Stage-level drop-off by Planner, Execution, and Evaluation</li>
                 </ul>
               </div>
             </article>
@@ -197,10 +208,10 @@
               <div class="framework-step__body">
                 <h2 class="framework-step__title">7. Guardrail Metrics</h2>
                 <ul class="framework-step__list">
-                  <li>Trust / repeat usage</li>
-                  <li>Error rate</li>
-                  <li>Latency</li>
-                  <li>User satisfaction</li>
+                  <li>Policy violation rate</li>
+                  <li>Unsafe output rate</li>
+                  <li>P95 latency ceiling</li>
+                  <li>Cost-per-success ceiling</li>
                 </ul>
               </div>
             </article>
@@ -209,13 +220,15 @@
               <div class="framework-step__body">
                 <h2 class="framework-step__title">8. Metric Relationships</h2>
                 <div class="analytics-flow">
-                  <span class="analytics-flow__node">Feature improvement</span>
-                  <span class="analytics-flow__arrow">→</span>
-                  <span class="analytics-flow__node">User behavior change</span>
-                  <span class="analytics-flow__arrow">→</span>
-                  <span class="analytics-flow__node">Intermediate outcome</span>
-                  <span class="analytics-flow__arrow">→</span>
-                  <span class="analytics-flow__node">Final outcome</span>
+                  <span class="analytics-flow__node">Better planner decisions</span>
+                  <span class="analytics-flow__arrow">&rarr;</span>
+                  <span class="analytics-flow__node">Better execution</span>
+                  <span class="analytics-flow__arrow">&rarr;</span>
+                  <span class="analytics-flow__node">Better outputs</span>
+                  <span class="analytics-flow__arrow">&rarr;</span>
+                  <span class="analytics-flow__node">Higher-quality outcomes</span>
+                  <span class="analytics-flow__arrow">&rarr;</span>
+                  <span class="analytics-flow__node">Lower cost</span>
                 </div>
               </div>
             </article>
@@ -225,15 +238,15 @@
                 <h2 class="framework-step__title">9. Measurement Strategy</h2>
                 <h3 class="analytics-subtitle">Data sources</h3>
                 <ul class="framework-step__list">
-                  <li>Event logs</li>
-                  <li>User actions</li>
-                  <li>Session data</li>
+                  <li>State transition logs</li>
+                  <li>Planner and evaluation traces</li>
+                  <li>Execution events and tool telemetry</li>
                 </ul>
                 <h3 class="analytics-subtitle">Tracking approach</h3>
                 <ul class="framework-step__list">
-                  <li>Event-based tracking</li>
-                  <li>Funnel analysis</li>
-                  <li>Cohort analysis</li>
+                  <li>Stage-level instrumentation</li>
+                  <li>Loop-level attribution</li>
+                  <li>Outcome-linked cohort analysis</li>
                 </ul>
               </div>
             </article>
@@ -242,46 +255,47 @@
               <div class="framework-step__body">
                 <h2 class="framework-step__title">10. Success Criteria</h2>
                 <ul class="framework-step__list">
-                  <li>Metric improvement targets</li>
-                  <li>Behavioral shifts</li>
+                  <li>Primary metric improves against baseline.</li>
+                  <li>Secondary metrics move in the same direction.</li>
+                  <li>Guardrails remain within operating thresholds.</li>
                 </ul>
               </div>
             </article>
 
             <article class="framework-step analytics-span-2">
               <div class="framework-step__body">
-                <h2 class="framework-step__title">11. System &amp; LLM Performance Metrics</h2>
+                <h2 class="framework-step__title">11. Agentic System Performance Metrics</h2>
                 <div class="analytics-grid analytics-grid--inner">
                   <div class="analytics-subcard">
-                    <h3 class="analytics-subtitle">A. Quality</h3>
+                    <h3 class="analytics-subtitle">A. Decision Quality</h3>
                     <ul class="framework-step__list">
-                      <li>Relevance</li>
-                      <li>Groundedness</li>
-                      <li>Consistency</li>
-                      <li>Tradeoff accuracy</li>
+                      <li>Plan correctness</li>
+                      <li>Decision reversals</li>
+                      <li>Goal alignment score</li>
                     </ul>
                   </div>
                   <div class="analytics-subcard">
                     <h3 class="analytics-subtitle">B. Reliability</h3>
                     <ul class="framework-step__list">
-                      <li>Hallucination rate</li>
-                      <li>Invalid output rate</li>
-                      <li>Retry rate</li>
+                      <li>Task failure rate</li>
+                      <li>Execution exception rate</li>
+                      <li>Recovery success rate</li>
                     </ul>
                   </div>
                   <div class="analytics-subcard">
                     <h3 class="analytics-subtitle">C. Latency &amp; Cost</h3>
                     <ul class="framework-step__list">
-                      <li>Response latency</li>
-                      <li>Token usage</li>
-                      <li>Cost per response</li>
+                      <li>Time to successful completion</li>
+                      <li>Cost per successful loop</li>
+                      <li>Token / compute per outcome</li>
                     </ul>
                   </div>
                   <div class="analytics-subcard">
                     <h3 class="analytics-subtitle">D. Guardrails</h3>
                     <ul class="framework-step__list">
-                      <li>Safety violation rate</li>
-                      <li>Tone adherence</li>
+                      <li>Policy breach rate</li>
+                      <li>Unsafe action prevention rate</li>
+                      <li>Compliance check pass rate</li>
                     </ul>
                   </div>
                 </div>
@@ -295,19 +309,17 @@
                   <div class="analytics-subcard">
                     <h3 class="analytics-subtitle">Offline</h3>
                     <ul class="framework-step__list">
-                      <li>Curated test cases</li>
-                      <li>Edge cases</li>
-                      <li>Human evaluation</li>
-                      <li>Prompt testing</li>
+                      <li>Scenario suites by system state complexity</li>
+                      <li>Regression checks on critical tasks</li>
+                      <li>Adversarial and boundary-case evaluation</li>
                     </ul>
                   </div>
                   <div class="analytics-subcard">
                     <h3 class="analytics-subtitle">Online</h3>
                     <ul class="framework-step__list">
-                      <li>A/B testing</li>
-                      <li>User feedback</li>
-                      <li>Regenerate behavior</li>
-                      <li>Conversion impact</li>
+                      <li>Shadow and staged rollouts</li>
+                      <li>Outcome lift by cohort</li>
+                      <li>Loop-level alerts on reliability and cost drift</li>
                     </ul>
                   </div>
                 </div>
@@ -319,43 +331,43 @@
                 <h2 class="framework-step__title">13. System Interfaces (Optional)</h2>
                 <div class="analytics-grid analytics-grid--inner">
                   <div class="analytics-subcard">
-                    <h3 class="analytics-subtitle">1. Ranking Service</h3>
+                    <h3 class="analytics-subtitle">1. Planner Service</h3>
                     <ul class="framework-step__list">
-                      <li>Input: User context, item features</li>
-                      <li>Output: Ordered candidates</li>
-                      <li>Role: Prioritize relevant options</li>
+                      <li>Input: current state, objectives, constraints</li>
+                      <li>Output: ranked plan candidates</li>
+                      <li>Role: choose a feasible next path</li>
                     </ul>
                   </div>
                   <div class="analytics-subcard">
-                    <h3 class="analytics-subtitle">2. Comparison Builder</h3>
+                    <h3 class="analytics-subtitle">2. Execution Layer</h3>
                     <ul class="framework-step__list">
-                      <li>Input: Ranked options, attributes</li>
-                      <li>Output: Structured comparison view</li>
-                      <li>Role: Support informed evaluation</li>
+                      <li>Input: selected plan and tool permissions</li>
+                      <li>Output: action traces and result artifacts</li>
+                      <li>Role: execute reliably with clear observability</li>
                     </ul>
                   </div>
                   <div class="analytics-subcard">
-                    <h3 class="analytics-subtitle">3. LLM Service</h3>
+                    <h3 class="analytics-subtitle">3. Evaluation Engine</h3>
                     <ul class="framework-step__list">
-                      <li>Input: Prompt, context, constraints</li>
-                      <li>Output: Natural-language guidance</li>
-                      <li>Role: Explain and summarize tradeoffs</li>
+                      <li>Input: outputs, expected criteria, policy checks</li>
+                      <li>Output: pass/fail signals with scores</li>
+                      <li>Role: enforce quality and safety gates</li>
                     </ul>
                   </div>
                   <div class="analytics-subcard">
-                    <h3 class="analytics-subtitle">4. Validation Layer</h3>
+                    <h3 class="analytics-subtitle">4. Decision Controller</h3>
                     <ul class="framework-step__list">
-                      <li>Input: LLM outputs, policy rules</li>
-                      <li>Output: Safe, compliant response</li>
-                      <li>Role: Enforce reliability and safety</li>
+                      <li>Input: evaluation results and system budget state</li>
+                      <li>Output: continue, revise, retry, or stop decision</li>
+                      <li>Role: optimize loop quality, cost, and completion time</li>
                     </ul>
                   </div>
                   <div class="analytics-subcard analytics-subcard--wide">
-                    <h3 class="analytics-subtitle">5. Logging / Analytics</h3>
+                    <h3 class="analytics-subtitle">5. Analytics Layer</h3>
                     <ul class="framework-step__list">
-                      <li>Input: Events across the full funnel</li>
-                      <li>Output: Dashboards and diagnostics</li>
-                      <li>Role: Measure outcomes and iterate</li>
+                      <li>Input: events, traces, metrics, and outcome labels</li>
+                      <li>Output: dashboards, alerts, and root-cause views</li>
+                      <li>Role: drive iteration with measurable evidence</li>
                     </ul>
                   </div>
                 </div>
@@ -365,31 +377,35 @@
         </div>
 
         <div class="framework-visual__when-wrap">
-          <h2 class="framework-visual__when-heading">When to use Analytics Framework</h2>
+          <h2 class="framework-visual__when-heading">When to use this Framework</h2>
           <div class="framework-visual__when-grid">
             <div class="framework-when-card">
               <h3 class="framework-when-card__title">Works well for</h3>
               <ul class="framework-when-card__list">
-                <li>AI-enabled products</li>
-                <li>Funnel-driven products</li>
-                <li>Decision-support systems</li>
-                <li>Systems with measurable outcomes</li>
+                <li>Multi-step agentic products with measurable outcomes</li>
+                <li>Systems where loop behavior drives product value</li>
+                <li>Teams optimizing quality, reliability, and cost together</li>
               </ul>
             </div>
             <div class="framework-when-card">
               <h3 class="framework-when-card__title">Not ideal for</h3>
               <ul class="framework-when-card__list">
-                <li>Pure exploratory systems</li>
-                <li>Early ideation phases</li>
-                <li>Highly creative workflows</li>
+                <li>Single-step deterministic workflows</li>
+                <li>Concept-stage products without stable outcomes</li>
+                <li>Systems lacking basic event instrumentation</li>
               </ul>
             </div>
           </div>
         </div>
 
         <div class="framework-visual__applied">
-          <h2 class="framework-visual__applied-heading">Applied in practice</h2>
-          <div id="analyticsAppliedSlot" data-component="applied-in-practice" data-applied-key="zillow-decision-tracker"></div>
+          <h2 class="framework-visual__applied-heading">Applied in Practice</h2>
+          <div
+            id="agenticAnalyticsAppliedSlot"
+            data-component="applied-in-practice"
+            data-applied-key="agentic-system-analytics"
+            data-applied-label="Example application"
+          ></div>
         </div>
       </section>
     </main>

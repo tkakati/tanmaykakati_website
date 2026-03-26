@@ -214,7 +214,59 @@ var FRAMEWORKS = [
     ],
     link: "/frameworks/agentic-system-design-framework",
   },
+  {
+    title: "Agentic Systems Analytics Framework",
+    category: "ai-systems",
+    description:
+      "A structured approach to measuring how agentic systems make decisions, iterate, and produce useful outcomes.",
+    steps: [
+      "Measure decision quality across the system loop",
+      "Track efficiency of iterations and execution",
+      "Evaluate alignment between system outputs and outcomes",
+      "Balance quality, cost, and reliability",
+    ],
+    link: "/frameworks/agentic-systems-analytics",
+  },
 ];
+
+var APPLIED_IN_PRACTICE = {
+  "zillow-decision-tracker": {
+    title: "Zillow — Decision Tracker Analytics",
+    description: "See how this framework is applied to measure decision-making and conversion.",
+    cta: "View Case ->",
+    link: "https://www.notion.so/Analytics-Zillow-Decision-Space-3283bb18cbd980f4a551d5b0dfe47828?source=copy_link",
+  },
+  "agentic-system-analytics": {
+    title: "Agentic System Analytics",
+    description:
+      "See how this framework is applied to measure planner decisions, query quality, scoring effectiveness, and loop efficiency in an agentic system.",
+    cta: "View Case ->",
+    link: "https://www.notion.so/Agentic-System-Analytics-32f3bb18cbd9809d8a29ccf69659e7c4?source=copy_link",
+  },
+};
+
+function renderAppliedInPracticeCards() {
+  var slots = document.querySelectorAll('[data-component="applied-in-practice"]');
+  if (!slots || !slots.length) return;
+  slots.forEach(function (slot) {
+    var key = slot.getAttribute("data-applied-key") || "";
+    var config = APPLIED_IN_PRACTICE[key];
+    if (!config) return;
+    var label = slot.getAttribute("data-applied-label") || "";
+    var labelHtml = label
+      ? '<p class="framework-applied-card__eyebrow">' + escapeHtml(label) + "</p>"
+      : "";
+    slot.innerHTML =
+      labelHtml +
+      '<div class="framework-applied-card">' +
+      '<h3 class="framework-applied-card__title">' + escapeHtml(config.title) + "</h3>" +
+      '<p class="framework-applied-card__desc">' + escapeHtml(config.description) + "</p>" +
+      '<a class="framework-applied-card__link" href="' + escapeHtml(config.link) + '" target="_blank" rel="noopener noreferrer">' +
+      escapeHtml(config.cta) +
+      "</a>" +
+      "</div>";
+  });
+}
 
 function renderFrameworksGrid() {
   var grid = document.getElementById("frameworksGrid");
@@ -726,9 +778,11 @@ if (document.readyState === "loading") {
     initProjectsPage();
     if (document.getElementById("frameworksGrid")) initFrameworksPage();
     if (document.getElementById("writingGrid")) initWritingPage();
+    renderAppliedInPracticeCards();
   });
 } else {
   initProjectsPage();
   if (document.getElementById("frameworksGrid")) initFrameworksPage();
   if (document.getElementById("writingGrid")) initWritingPage();
+  renderAppliedInPracticeCards();
 }
