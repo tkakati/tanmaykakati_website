@@ -116,6 +116,17 @@ const PROJECTS = [
     demo: "https://zillow-decision-dashboard-yog2.vercel.app/",
     caseStudy: "https://www.notion.so/PRD-Decision-Tracker-with-Trade-off-Summaries-Zillow-2f43bb18cbd9800285bad7477491ea8e?source=copy_link",
   },
+  {
+    id: "hirefeed",
+    title: "HireFeed — Hiring Post Discovery",
+    category: "AI",
+    summary:
+      "An agentic system that discovers hiring posts from the open web, extracts structured signals, ranks opportunities, and enables fast, contextual outreach.",
+    tags: ["Agentic", "Retrieval", "Ranking"],
+    demo: "https://jobpostdiscovery.vercel.app/home",
+    caseStudy:
+      "https://www.notion.so/HireFeed-Find-Hiring-Posts-32f3bb18cbd980b8986deb19c89d273f?source=copy_link",
+  },
 ];
 
 function escapeHtml(s) {
@@ -164,7 +175,7 @@ var FRAMEWORKS = [
     category: "ai-systems",
     description: "A structured approach to designing scalable product systems.",
     steps: ["Frame the problem clearly", "Define requirements and constraints", "Design system architecture and flow", "Evaluate tradeoffs and evolution"],
-    link: "frames.html",
+    link: "/frameworks/frames",
   },
   {
     title: "LLM System Design Framework",
@@ -176,7 +187,7 @@ var FRAMEWORKS = [
       "Design prompts and generation flow",
       "Ensure reliability, evaluation, and feedback",
     ],
-    link: "llm_sys_des.html",
+    link: "/frameworks/llm-system-design-framework",
   },
   {
     title: "Analytics Framework",
@@ -188,7 +199,20 @@ var FRAMEWORKS = [
       "Measure system and LLM performance",
       "Evaluate impact and iterate",
     ],
-    link: "analytics.html",
+    link: "/frameworks/analytics-framework",
+  },
+  {
+    title: "Agentic System Design Framework",
+    category: "ai-systems",
+    description:
+      "A structured approach to designing agent-driven systems that plan, act, evaluate, and iterate under uncertainty.",
+    steps: [
+      "Define agent objective and stopping criteria",
+      "Design planning and control policy",
+      "Structure tools, memory, and state",
+      "Build evaluation loops and feedback signals",
+    ],
+    link: "/frameworks/agentic-system-design-framework",
   },
 ];
 

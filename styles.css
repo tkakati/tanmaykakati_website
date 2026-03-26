@@ -1363,6 +1363,96 @@ a.card__title-link:focus{ outline: none; box-shadow: var(--ring); }
   width: 100%;
   height: auto;
 }
+.agentic-hero-card{
+  overflow: visible;
+  background: linear-gradient(135deg, #f8fafc 0%, rgba(239,246,255,.45) 100%);
+}
+.agentic-diagram{
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 800px;
+  padding: 12px 0;
+}
+.agentic-diagram > svg{
+  position: absolute;
+  inset: 0;
+}
+.agentic-node{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 240px;
+  min-height: 110px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 2px solid #e2e8f0;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(15,23,42,.08);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.agentic-node__num{
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  flex: 0 0 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #2563eb;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.agentic-node__content h3{
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #0f172a;
+}
+.agentic-node__content p{
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #475569;
+}
+@media (max-width: 1100px){
+  .agentic-diagram{
+    min-height: 900px;
+  }
+  .agentic-node{
+    width: 220px;
+  }
+}
+@media (max-width: 900px){
+  .agentic-diagram{
+    min-height: auto;
+    padding: 14px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .agentic-diagram > svg{
+    position: relative;
+    inset: auto;
+    grid-column: 1 / -1;
+  }
+  .agentic-node{
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    transform: none;
+    width: 100%;
+    min-height: 100px;
+  }
+}
+@media (max-width: 560px){
+  .agentic-diagram{
+    grid-template-columns: 1fr;
+  }
+}
 .llm-visual__grid-wrap{
   max-width: 1120px;
   margin: 0 auto;
