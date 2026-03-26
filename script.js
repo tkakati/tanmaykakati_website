@@ -152,8 +152,8 @@ function renderProjectsGrid() {
     var demoUrl = p.demo || "#";
     var targetAttr = ' target="_blank" rel="noopener noreferrer"';
     var ctasHtml =
-      '<a class="card__cta card__cta--primary" href="' + escapeHtml(caseStudyUrl) + '"' + targetAttr + '>View demo →</a>' +
-      '<a class="card__cta card__cta--secondary" href="' + escapeHtml(demoUrl) + '"' + targetAttr + '>View case study →</a>';
+      '<a class="card__cta card__cta--primary" href="' + escapeHtml(demoUrl) + '"' + targetAttr + '>View demo →</a>' +
+      '<a class="card__cta card__cta--secondary" href="' + escapeHtml(caseStudyUrl) + '"' + targetAttr + '>View case study →</a>';
     return (
       '<article class="card card--project" data-filter="' + escapeHtml(slug) + '">' +
         '<div class="card__top">' +
