@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Personalization Is One of the Most Defensible Uses of AI | Writing</title>
+    <meta
+      name="description"
+      content="A short essay on why generic AI output is becoming interchangeable, and why personalization is where long term product value becomes defensible."
+    />
+
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: "#C9FF1A",
+              accentMuted: "#6AA84F",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #fcfcfa;
+        color: #111111;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { createRoot } = ReactDOM;
+
+      function PullQuote({ children }) {
+        return (
+          <blockquote className="my-12 border-l border-l-accentMuted/70 pl-4 pr-2 font-serif italic text-[1.18rem] leading-relaxed text-zinc-900">
+            {children}
+          </blockquote>
+        );
+      }
+
+      function ContextCallout({ children }) {
+        return (
+          <div className="my-12 rounded-xl border border-zinc-200/80 bg-white/65 px-6 py-5">
+            <div className="text-sm font-semibold tracking-wide text-zinc-700">What personalization really means</div>
+            <div className="mt-3 text-zinc-800 leading-relaxed">{children}</div>
+          </div>
+        );
+      }
+
+      function NewsletterArticle() {
+        var _a = React.useState(0), progress = _a[0], setProgress = _a[1];
+
+        React.useEffect(function () {
+          function update() {
+            var el = document.documentElement;
+            var scrollTop = window.pageYOffset || el.scrollTop || 0;
+            var scrollHeight = el.scrollHeight - el.clientHeight;
+            var p = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+            setProgress(Math.min(1, Math.max(0, p)));
+          }
+          update();
+          window.addEventListener("scroll", update, { passive: true });
+          return function () {
+            window.removeEventListener("scroll", update);
+          };
+        }, []);
+
+        return (
+          <div className="min-h-screen">
+            <div className="sticky top-0 z-30 h-[3px] w-full bg-transparent">
+              <div
+                className="h-full bg-accent/90"
+                style={{ width: Math.max(progress * 100, 2) + "%" }}
+              />
+            </div>
+
+            <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-10">
+              <div className="flex items-center justify-start">
+                <a
+                  href="writing.html"
+                  className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
+                >
+                  ← Back to writings
+                </a>
+              </div>
+
+              <h1 className="mt-6 font-serif text-4xl sm:text-5xl leading-tight tracking-tight text-zinc-900">
+                Personalization Is One of the Most Defensible Uses of AI
+              </h1>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-zinc-600">
+                <span className="rounded-full border border-zinc-200 bg-white px-3 py-1">Personalization</span>
+                <span aria-hidden="true" className="text-zinc-400">·</span>
+                <span className="font-medium text-zinc-700">Feb 24, 2026</span>
+                <span aria-hidden="true" className="text-zinc-400">·</span>
+                <span className="font-medium text-zinc-700">4 min read</span>
+              </div>
+
+              <article className="mt-10">
+                <p className="text-zinc-800 leading-relaxed">
+                  Generic AI output is everywhere now.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Summaries, drafts, checklists, and basic answers can be produced by many tools with similar quality.
+                  What felt rare two years ago now feels normal. The supply curve moved fast. The user can switch tabs and
+                  get a close substitute in seconds.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  That shift changes where product value comes from. If your output is generic, your moat is weak.
+                  The model is not enough. The prompt is not enough. Even a better benchmark score is rarely enough.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Generic generation is easy to copy because the inputs are thin and the outputs are interchangeable.
+                  Most systems see the same public context, run similar models, and return similarly shaped text.
+                  Over time the differences compress.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The more useful question is this: what can your system know that another system does not?
+                </p>
+
+                <ContextCallout>
+                  Personalization is not changing tone or adding a first name.
+                  It is adapting decisions to real user context such as goals, constraints, prior behavior, preferences,
+                  and where that person is in a workflow right now.
+                </ContextCallout>
+
+                <p className="text-zinc-800 leading-relaxed">
+                  This is where AI starts to become defensible.
+                  When the system understands the user deeply, it stops producing generic help and starts producing specific value.
+                  It can choose what to show, what to skip, and what to prioritize for that person.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Writing is a clear example.
+                  A generic assistant can produce paragraphs. A personalized assistant can match your voice, your audience,
+                  your recurring structure, and your editing habits. It can learn that you prefer short openings, concrete verbs,
+                  and one strong close. That is harder to replace than a nice sounding paragraph.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Recommendations show the same pattern.
+                  Generic ranking gives broad relevance. Personalized ranking can use historical choices, risk tolerance, budget,
+                  and intent signals from this session. The result is fewer irrelevant options and faster decisions.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Coaching and learning systems become meaningfully better with memory.
+                  A generic coach gives broad advice. A personalized coach remembers mistakes you repeat, habits that work for you,
+                  and goals you have already committed to. It can push on the right lever at the right time.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Search is similar.
+                  Generic search optimizes for average relevance.
+                  Personalized search can interpret the same query differently based on role, task, and recent activity.
+                  That often matters more than the underlying model upgrade.
+                </p>
+
+                <PullQuote>
+                  AI gets defensible when it remembers the user better than competitors do.
+                </PullQuote>
+
+                <p className="text-zinc-800 leading-relaxed">
+                  This is also why personalization drives switching costs.
+                  When a system captures your workflow context and improves over repeated use, leaving it means giving up accumulated fit.
+                  You are not just changing tools. You are abandoning tuned behavior.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  There is also an operational advantage.
+                  Personalized systems create clearer product signals.
+                  You can see where recommendations were ignored, where tone felt off, and where users corrected the system.
+                  Those signals are far more actionable than broad thumbs up metrics on generic output.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  This has implications for hiring and team design too.
+                  Teams that win here combine product judgment, analytics discipline, and systems thinking.
+                  They instrument context, define feedback loops, and decide which user traits should shape behavior.
+                  That work is hard to copy quickly.
+                  It lives in the product itself, not in a model endpoint.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The companies that treat personalization as a first class product capability will compound faster.
+                  Each interaction improves future relevance.
+                  Each cycle makes the system feel more native to the user.
+                  That compounding effect is where defensibility starts to become real.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Product teams should treat this as a systems problem, not a prompt problem.
+                  You need memory design, preference capture, feedback loops, and clear control for the user.
+                  People should be able to inspect and shape how the system adapts to them.
+                  That builds trust and keeps personalization from becoming noise.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  None of this means model quality no longer matters.
+                  It does.
+                  But model quality is becoming table stakes.
+                  Personalized utility is where durable advantage is more likely to survive.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The pattern is simple.
+                  Generic AI looks impressive.
+                  Personalized AI changes outcomes.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The long term winners will not be the products with the flashiest model story.
+                  They will be the products that know the user, respect context, and keep getting better at the exact job that user needs done.
+                </p>
+              </article>
+            </div>
+          </div>
+        );
+      }
+
+      createRoot(document.getElementById("root")).render(<NewsletterArticle />);
+    </script>
+  </body>
+</html>

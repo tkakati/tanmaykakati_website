@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Your AI Feature Is Competing Against Doing Nothing | Writing</title>
+    <meta
+      name="description"
+      content="A short essay on why most AI features compete against habit and inertia, and what product teams should optimize for to drive adoption."
+    />
+
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: "#C9FF1A",
+              accentMuted: "#6AA84F",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #fcfcfa;
+        color: #111111;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { createRoot } = ReactDOM;
+
+      function PullQuote({ children }) {
+        return (
+          <blockquote className="my-12 border-l border-l-accentMuted/70 pl-4 pr-2 font-serif italic text-[1.18rem] leading-relaxed text-zinc-900">
+            {children}
+          </blockquote>
+        );
+      }
+
+      function ProductCallout({ children }) {
+        return (
+          <div className="my-12 rounded-xl border border-zinc-200/80 bg-white/65 px-6 py-5">
+            <div className="text-sm font-semibold tracking-wide text-zinc-700">Adoption reality</div>
+            <div className="mt-3 text-zinc-800 leading-relaxed">{children}</div>
+          </div>
+        );
+      }
+
+      function NewsletterArticle() {
+        var _a = React.useState(0), progress = _a[0], setProgress = _a[1];
+
+        React.useEffect(function () {
+          function update() {
+            var el = document.documentElement;
+            var scrollTop = window.pageYOffset || el.scrollTop || 0;
+            var scrollHeight = el.scrollHeight - el.clientHeight;
+            var p = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+            setProgress(Math.min(1, Math.max(0, p)));
+          }
+          update();
+          window.addEventListener("scroll", update, { passive: true });
+          return function () {
+            window.removeEventListener("scroll", update);
+          };
+        }, []);
+
+        return (
+          <div className="min-h-screen">
+            <div className="sticky top-0 z-30 h-[3px] w-full bg-transparent">
+              <div
+                className="h-full bg-accent/90"
+                style={{ width: Math.max(progress * 100, 2) + "%" }}
+              />
+            </div>
+
+            <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-10">
+              <div className="flex items-center justify-start">
+                <a
+                  href="writing.html"
+                  className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
+                >
+                  ← Back to writings
+                </a>
+              </div>
+
+              <h1 className="mt-6 font-serif text-4xl sm:text-5xl leading-tight tracking-tight text-zinc-900">
+                Your AI Feature Is Competing Against Doing Nothing
+              </h1>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-zinc-600">
+                <span className="rounded-full border border-zinc-200 bg-white px-3 py-1">Product Strategy</span>
+                <span aria-hidden="true" className="text-zinc-400">·</span>
+                <span className="font-medium text-zinc-700">Mar 19, 2026</span>
+                <span aria-hidden="true" className="text-zinc-400">·</span>
+                <span className="font-medium text-zinc-700">4 min read</span>
+              </div>
+
+              <article className="mt-10">
+                <p className="text-zinc-800 leading-relaxed">
+                  Product teams like to think users compare features rationally.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  We imagine a neat decision tree.
+                  A user sees our AI feature, compares it to other tools, and picks the best one.
+                  Better quality should win.
+                  Better model should win.
+                  Better benchmark should win.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  But that is rarely what happens in real products.
+                  Most users are not comparing your AI feature to another AI feature.
+                  They are comparing it to whatever they already do today.
+                  That might be a spreadsheet, saved template, browser search, keyboard shortcut, teammate message, or no action at all.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  In other words, your strongest competitor is usually inertia.
+                </p>
+
+                <ProductCallout>
+                  If your feature does not beat the path of least resistance, users will not switch.
+                  They will stay with old habits, even when your output is better.
+                </ProductCallout>
+
+                <p className="text-zinc-800 leading-relaxed">
+                  This is why impressive AI often underperforms after launch.
+                  Teams optimize for what looks strong in demos.
+                  Users optimize for what costs the least effort in a busy day.
+                  Those are different optimization functions.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Consider writing workflows.
+                  An AI drafting tool might generate cleaner first drafts than a manual process.
+                  But if it takes longer to prompt, review, and edit than opening an old template, users go back to the template.
+                  Not because the AI is bad.
+                  Because the old path is easier.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Planning tools show the same pattern.
+                  A team may ship a feature that suggests perfect task breakdowns.
+                  If people cannot quickly adjust the output or trust where it came from, they default to whiteboards and existing docs.
+                  Familiar tools win when confidence is low.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Recruiting products are another clear case.
+                  A model can rank candidates well.
+                  But if hiring managers cannot understand the reason behind rankings, they revert to manual review.
+                  Managers do not need perfect automation.
+                  They need faster decisions they can defend.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Support and analytics teams behave similarly.
+                  They might accept small quality tradeoffs if the system is quick, stable, and easy to correct.
+                  They reject higher quality output when it arrives late or feels risky.
+                </p>
+
+                <PullQuote>
+                  Your AI feature is not replacing the best tool.
+                  It is replacing the easiest habit.
+                </PullQuote>
+
+                <p className="text-zinc-800 leading-relaxed">
+                  This changes what product teams should optimize for.
+                  Start with adoption friction.
+                  How many steps before a user gets value?
+                  How much setup is required?
+                  How fast is first useful result?
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Then optimize for trust and editability.
+                  Can users see what informed the output?
+                  Can they fix errors without starting over?
+                  Can they keep control when the model is wrong?
+                  If not, your feature will feel expensive to use.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Integration is another non negotiable.
+                  AI that sits outside the core workflow usually becomes optional.
+                  Optional features are easy to ignore.
+                  Features wired into existing flow have a better chance of repeated use.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  This is why time to first value is such a strong metric.
+                  If a new user cannot get a useful result in minutes, adoption will stall.
+                  Teams then misread the problem as awareness or training.
+                  In many cases, the issue is simpler.
+                  The feature asks the user to do too much before value appears.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Pricing and permission models also matter.
+                  If users fear that each click is expensive, they reduce usage.
+                  If legal or compliance review is unclear, teams avoid the tool.
+                  If managers cannot audit decisions, adoption slows.
+                  Product quality includes these operating realities.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The teams that win here usually run small experiments on workflow friction.
+                  They test default prompts, inline edits, confidence indicators, and approval flows.
+                  They track activation, repeat usage, and task completion time.
+                  They do not just track model accuracy.
+                  They track whether the feature changed behavior.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  None of this means model quality is irrelevant.
+                  It means quality alone is not enough.
+                  Adoption comes from a full system that is useful, reliable, and low friction under normal working conditions.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  If you want honest product strategy for AI, reframe the battlefield.
+                  Do not ask whether your feature beats the leading AI app.
+                  Ask whether it beats current behavior.
+                  Ask whether it beats doing nothing.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Doing nothing is often the incumbent.
+                  Your feature has to earn the switch.
+                </p>
+              </article>
+            </div>
+          </div>
+        );
+      }
+
+      createRoot(document.getElementById("root")).render(<NewsletterArticle />);
+    </script>
+  </body>
+</html>

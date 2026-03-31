@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>The Best Prompt Is a System, Not a Sentence | Writing</title>
+    <meta
+      name="description"
+      content="A short essay on why strong AI output comes from system design around the model, not only from clever prompt wording."
+    />
+
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: "#C9FF1A",
+              accentMuted: "#6AA84F",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #fcfcfa;
+        color: #111111;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { createRoot } = ReactDOM;
+
+      function PullQuote({ children }) {
+        return (
+          <blockquote className="my-12 border-l border-l-accentMuted/70 pl-4 pr-2 font-serif italic text-[1.18rem] leading-relaxed text-zinc-900">
+            {children}
+          </blockquote>
+        );
+      }
+
+      function SystemsCallout({ children }) {
+        return (
+          <div className="my-12 rounded-xl border border-zinc-200/80 bg-white/65 px-6 py-5">
+            <div className="text-sm font-semibold tracking-wide text-zinc-700">Product reality</div>
+            <div className="mt-3 text-zinc-800 leading-relaxed">{children}</div>
+          </div>
+        );
+      }
+
+      function PlaceholderVisual() {
+        return (
+          <div className="my-12 rounded-xl border border-zinc-200/80 bg-zinc-50/70 px-5 py-6 text-sm text-zinc-600">
+            [Optional image: Prompt inside a larger system of context, retrieval, constraints, and evaluation]
+          </div>
+        );
+      }
+
+      function NewsletterArticle() {
+        var _a = React.useState(0), progress = _a[0], setProgress = _a[1];
+
+        React.useEffect(function () {
+          function update() {
+            var el = document.documentElement;
+            var scrollTop = window.pageYOffset || el.scrollTop || 0;
+            var scrollHeight = el.scrollHeight - el.clientHeight;
+            var p = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+            setProgress(Math.min(1, Math.max(0, p)));
+          }
+          update();
+          window.addEventListener("scroll", update, { passive: true });
+          return function () {
+            window.removeEventListener("scroll", update);
+          };
+        }, []);
+
+        return (
+          <div className="min-h-screen">
+            <div className="sticky top-0 z-30 h-[3px] w-full bg-transparent">
+              <div
+                className="h-full bg-accent/90"
+                style={{ width: Math.max(progress * 100, 2) + "%" }}
+              />
+            </div>
+
+            <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-10">
+              <div className="flex items-center justify-start">
+                <a
+                  href="writing.html"
+                  className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
+                >
+                  ← Back to writings
+                </a>
+              </div>
+
+              <h1 className="mt-6 font-serif text-4xl sm:text-5xl leading-tight tracking-tight text-zinc-900">
+                The Best Prompt Is a System, Not a Sentence
+              </h1>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-zinc-600">
+                <span className="rounded-full border border-zinc-200 bg-white px-3 py-1">AI Systems</span>
+                <span aria-hidden="true" className="text-zinc-400">·</span>
+                <span className="font-medium text-zinc-700">Mar 26, 2026</span>
+                <span aria-hidden="true" className="text-zinc-400">·</span>
+                <span className="font-medium text-zinc-700">4 min read</span>
+              </div>
+
+              <article className="mt-10">
+                <p className="text-zinc-800 leading-relaxed">
+                  Prompt engineering gets framed in a misleading way.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The story usually sounds like this: find the perfect sentence, and the model will do exactly what you want.
+                  That framing works for social posts and quick demos.
+                  It breaks down fast in production.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  In real products, quality almost never comes from one clever instruction.
+                  It comes from the system around the model.
+                  Context quality, retrieval quality, constraints, output structure, and evaluation loops decide whether users trust the result.
+                  The prompt still matters.
+                  It is just one layer.
+                </p>
+
+                <SystemsCallout>
+                  If you improve the system, average prompts can perform well.
+                  If the system is weak, even great prompts fail in messy real world usage.
+                </SystemsCallout>
+
+                <p className="text-zinc-800 leading-relaxed">
+                  Start with context.
+                  A model cannot infer your product state, user history, business rules, and current task unless you provide them.
+                  Many bad outputs are not reasoning failures.
+                  They are missing context failures.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Retrieval is next.
+                  If your retrieval layer surfaces partial or irrelevant information, the model will confidently answer from weak evidence.
+                  Teams often blame wording when the actual issue is poor data selection.
+                  Better retrieval usually improves output more than another round of prompt tweaking.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Then come constraints and structure.
+                  Define what the model can and cannot do.
+                  Define response schema.
+                  Define allowed sources.
+                  Define fallback behavior when confidence is low.
+                  Clear constraints reduce variance and make outputs reviewable.
+                </p>
+
+                <PlaceholderVisual />
+
+                <p className="text-zinc-800 leading-relaxed">
+                  Validation is just as important.
+                  In product environments, you need checks for format, policy, and basic factual consistency.
+                  Without validation, one bad response can erase trust faster than ten good responses can build it.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Feedback loops complete the system.
+                  Capture edits users make.
+                  Capture when they regenerate.
+                  Capture where they abandon the flow.
+                  Those signals tell you where the system fails.
+                  They are often more useful than another static benchmark run.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Search assistants offer another useful example.
+                  Teams often focus on instructions like “answer clearly” or “cite sources.”
+                  Those instructions help.
+                  But quality usually jumps when retrieval is tuned for freshness, source authority, and query intent.
+                  Once the right evidence is present, simpler prompts are often enough.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Agent workflows show this even more strongly.
+                  If a planning agent has poor tool descriptions and weak state tracking, no prompt rewrite will make behavior stable.
+                  Give that same agent clear tool contracts, bounded actions, and checkpoints between steps, and output quality improves quickly.
+                  The improvement comes from control design.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Support workflows show this clearly.
+                  A team might spend weeks improving prompt wording for tone and completeness.
+                  But the bigger gain often comes from attaching ticket history, product policy snippets, and known resolution playbooks.
+                  Add lightweight checks before send.
+                  Suddenly the same model looks much smarter.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  Outreach systems follow a similar pattern.
+                  Teams chase better phrasing.
+                  Results improve modestly.
+                  When they feed accurate account context, role specific pain points, prior interactions, and clear response format rules, reply quality rises more materially.
+                  The lift comes from system inputs, not verbal tricks.
+                </p>
+
+                <PullQuote>
+                  A prompt is not a strategy.
+                  It is an interface into your system design choices.
+                </PullQuote>
+
+                <p className="text-zinc-800 leading-relaxed">
+                  This is good news for builders and PMs.
+                  You do not need to depend on prompt magic.
+                  You can engineer reliability with components you control.
+                  Instrument context pipelines.
+                  Improve retrieval ranking.
+                  Enforce constraints.
+                  Add verification.
+                  Close the loop with user feedback.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  A practical way to evaluate your stack is simple.
+                  Ask where errors originate.
+                  Is the model missing context?
+                  Is retrieval incomplete?
+                  Did a policy rule fail?
+                  Was output format ambiguous?
+                  This diagnosis usually points to system fixes before prompt fixes.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  That approach also scales better across teams.
+                  Prompt tips are hard to operationalize.
+                  System improvements are easier to document, monitor, and standardize.
+                  They reduce dependence on individual prompt skill and make behavior more consistent across users and use cases.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  As those layers improve, your dependence on clever wording drops.
+                  Prompts become simpler, outputs become more predictable, and iteration gets faster.
+                  That is a healthier product posture than hoping a sentence will carry the whole experience.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  The best teams do not treat prompting as copywriting.
+                  They treat it as one part of system architecture.
+                  That mindset shift is where most practical gains come from.
+                </p>
+
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  So yes, write clear prompts.
+                  But build the surrounding system first.
+                  In production, the best prompt is rarely the cleverest sentence.
+                  It is the one supported by a strong system.
+                </p>
+              </article>
+            </div>
+          </div>
+        );
+      }
+
+      createRoot(document.getElementById("root")).render(<NewsletterArticle />);
+    </script>
+  </body>
+</html>

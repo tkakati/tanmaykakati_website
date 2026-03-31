@@ -289,33 +289,110 @@ function renderFrameworksGrid() {
 /** Writing: category slug "tech-business" or "personal" for filtering. */
 var WRITING_POSTS = [
   {
-    title: "AI Is Rarely the Product. It’s Usually the Cost Center.",
-    category: "tech-business",
-    description: "Most AI demos look impressive. In production, the costs and complexity show up first.",
-    date: "3 min read",
-    link: "ai_cost_center.html",
+    title: "You Don’t Have an AI Problem. You Have a Workflow Problem.",
+    category: "Workflow Design",
+    description:
+      "Many AI features fail because workflow design is weak. The model often is not the core issue.",
+    intensity: "high",
+    wordCount: 701,
+    publishedDate: "Mar 31, 2026",
+    readTime: "4 min read",
+    link: "you-dont-have-an-ai-problem-you-have-a-workflow-problem.html",
+  },
+  {
+    title: "The Best Prompt Is a System, Not a Sentence",
+    category: "AI Systems",
+    description:
+      "Strong AI output depends on context, retrieval, constraints, and feedback loops far more than a single clever prompt.",
+    intensity: "high",
+    wordCount: 707,
+    publishedDate: "Mar 26, 2026",
+    readTime: "4 min read",
+    link: "best-prompt-is-a-system-not-a-sentence.html",
+  },
+  {
+    title: "Your AI Feature Is Competing Against Doing Nothing",
+    category: "Product Strategy",
+    description:
+      "Most AI features lose to inertia, old habits, and workarounds unless they beat the path of least resistance.",
+    intensity: "high",
+    wordCount: 666,
+    publishedDate: "Mar 19, 2026",
+    readTime: "4 min read",
+    link: "ai-feature-competing-against-doing-nothing.html",
+  },
+  {
+    title: "“Good Enough” AI Beats “Perfect” AI",
+    category: "Product Execution",
+    description:
+      "In production, speed, reliability, and usefulness often matter more than chasing perfect model output.",
+    intensity: "medium",
+    wordCount: 648,
+    publishedDate: "Mar 11, 2026",
+    readTime: "3 min read",
+    link: "good-enough-ai-beats-perfect-ai.html",
+  },
+  {
+    title: "Personalization Is One of the Most Defensible Uses of AI",
+    category: "Personalization",
+    description:
+      "Generic AI output is getting commoditized. Personalization is where systems become truly useful and harder to replace.",
+    intensity: "medium",
+    wordCount: 687,
+    publishedDate: "Feb 24, 2026",
+    readTime: "4 min read",
+    link: "personalization-defensible-ai.html",
   },
   {
     title: "Workflows First. Agents Second.",
-    category: "tech-business",
+    category: "Workflow Design",
     description:
       "Most AI demos feel magical. You type something vague; the system figures out what to do.",
-    date: "3 min read",
+    intensity: "low",
+    wordCount: 227,
+    publishedDate: "Feb 02, 2026",
+    readTime: "2 min read",
     link: "workflows_first_agents_second.html",
   },
+  {
+    title: "AI Is Rarely the Product. It’s Usually the Cost Center.",
+    category: "AI Economics",
+    description: "Most AI demos look impressive. In production, the costs and complexity show up first.",
+    intensity: "medium",
+    wordCount: 530,
+    publishedDate: "Jan 04, 2026",
+    readTime: "3 min read",
+    link: "ai_cost_center.html",
+  },
 ];
+
+function calculateReadTime(wordCount, intensity) {
+  if (!wordCount) return "";
+  var speed = 220;
+  if (intensity === "low") speed = 250;
+  if (intensity === "high") speed = 180;
+  var minutes = Math.max(2, Math.ceil(wordCount / speed));
+  return minutes + " min read";
+}
 
 function renderWritingGrid() {
   var grid = document.getElementById("writingGrid");
   if (!grid || !WRITING_POSTS.length) return;
   var html = WRITING_POSTS.map(function (post) {
     var link = post.link || "#";
+    var tag = post.category || "Essay / Opinion";
+    var publishedDate = post.publishedDate || "";
+    var readTime = calculateReadTime(post.wordCount, post.intensity) || post.readTime || "";
+    var filterValue = tag.toLowerCase().replace(/\s+/g, "-");
+    var metaHtml =
+      '<span class="writing-item__meta-cat">' + escapeHtml(tag) + "</span>" +
+      (publishedDate ? '<span class="writing-item__meta-sep" aria-hidden="true">•</span><span class="writing-item__meta-read">' + escapeHtml(publishedDate) + "</span>" : "") +
+      (readTime ? '<span class="writing-item__meta-sep" aria-hidden="true">•</span><span class="writing-item__meta-read">' + escapeHtml(readTime) + "</span>" : "");
     return (
-      '<article class="writing-item" data-filter="' + escapeHtml(post.category) + '" data-link="' + escapeHtml(link) + '" tabindex="0" role="link" aria-label="' + escapeHtml(post.title) + '">' +
+      '<article class="writing-item" data-filter="' + escapeHtml(filterValue) + '" data-link="' + escapeHtml(link) + '" tabindex="0" role="link" aria-label="' + escapeHtml(post.title) + '">' +
         '<div class="writing-item__card">' +
           '<div class="writing-item__meta-row">' +
-            '<span class="writing-item__meta-cat">Essay / Opinion</span>' +
-            (post.date ? '<span class="writing-item__meta-sep" aria-hidden="true">•</span><span class="writing-item__meta-read">' + escapeHtml(post.date) + "</span>" : "") +
+            metaHtml +
           "</div>" +
           '<h3 class="writing-item__title"><a class="writing-item__title-link" href="' + escapeHtml(link) + '">' + escapeHtml(post.title) + "</a></h3>" +
           (post.description ? '<p class="writing-item__description">' + escapeHtml(post.description) + "</p>" : "") +
