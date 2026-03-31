@@ -202,6 +202,11 @@ body::before{
   pointer-events: auto;
 }
 
+/* Temporarily disabled: topbar hover mega menu */
+.mega{
+  display: none !important;
+}
+
 /* Mobile: show nav when menu toggled */
 .topbar[data-nav-open="true"] .nav{
   display: flex;
@@ -709,6 +714,13 @@ a.card__title-link:focus{ outline: none; box-shadow: var(--ring); }
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 20px;
+}
+
+/* Temporarily disabled: listing-page filter tabs */
+.projects-tabs,
+.framework-tabs,
+.writing-tabs{
+  display: none !important;
 }
 .framework-tabs__btn{
   appearance: none;

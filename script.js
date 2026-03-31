@@ -354,24 +354,13 @@ function setActiveSection(sectionId) {
     s.classList.toggle("mega__section--active", s.getAttribute("data-mega-section") === sectionId);
   });
 }
-if (topbar && megaNavItems.length) {
-  megaNavItems.forEach(function (link) {
-    var target = link.getAttribute("data-mega-target");
-    link.addEventListener("mouseenter", function () {
-      setMegaOpen(true);
-      setActiveSection(target);
-    });
-  });
-  topbar.addEventListener("mouseleave", function () {
-    setMegaOpen(false);
-    setActiveSection("");
-  });
-}
+// Mega hover menu is intentionally disabled for now.
 if (navToggle && topbar) {
   navToggle.addEventListener("click", function () {
     var open = topbar.getAttribute("data-nav-open") === "true";
     setNavOpen(!open);
-    setMegaOpen(!open);
+    setMegaOpen(false);
+    setActiveSection("");
   });
 }
 
@@ -619,6 +608,7 @@ function initFrameworkFilters() {
 
 function initProjectsPage() {
   renderProjectsGrid();
+  // Temporarily disabling tab filters; keep all cards visible.
   var cta = document.getElementById("viewAllProjectsCta");
   if (cta) {
     var path = window.location.pathname || "";
@@ -627,11 +617,10 @@ function initProjectsPage() {
       cta.style.display = PROJECTS.length > 3 ? "inline-block" : "none";
     }
   }
-  initProjectFilters();
 }
 function initFrameworksPage() {
   renderFrameworksGrid();
-  initFrameworkFilters();
+  // Temporarily disabling tab filters; keep all cards visible.
 
   var grid = document.getElementById("frameworksGrid");
   if (!grid) return;
@@ -751,7 +740,7 @@ function initWritingFilters() {
 
 function initWritingPage() {
   renderWritingGrid();
-  initWritingFilters();
+  // Temporarily disabling tab filters; keep all cards visible.
 
   var grid = document.getElementById("writingGrid");
   if (!grid) return;
