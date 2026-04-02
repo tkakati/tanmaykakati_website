@@ -98,8 +98,6 @@ if (document.readyState === "loading") {
 
 const topbar = document.getElementById("topbar");
 const navToggle = document.querySelector('[data-action="toggleNav"]');
-const megaNavItems = document.querySelectorAll("[data-mega-target]");
-const megaSections = document.querySelectorAll("[data-mega-section]");
 
 const modal = document.getElementById("caseStudyModal");
 const modalTitle = document.getElementById("modalTitle");
@@ -418,28 +416,24 @@ const CASE_STUDIES = {
   },
 };
 
-/* Mega menu: open on hover (desktop) or when nav is open (mobile) */
-function setMegaOpen(open) {
-  if (topbar) topbar.setAttribute("data-mega-open", open ? "true" : "false");
-}
+/* Primary navigation: simple and explicit, no hidden hover menu state. */
 function setNavOpen(open) {
   if (topbar) topbar.setAttribute("data-nav-open", open ? "true" : "false");
   if (navToggle) navToggle.setAttribute("aria-expanded", open ? "true" : "false");
 }
-function setActiveSection(sectionId) {
-  megaSections.forEach(function (s) {
-    s.classList.toggle("mega__section--active", s.getAttribute("data-mega-section") === sectionId);
-  });
-}
-// Mega hover menu is intentionally disabled for now.
 if (navToggle && topbar) {
   navToggle.addEventListener("click", function () {
     var open = topbar.getAttribute("data-nav-open") === "true";
     setNavOpen(!open);
-    setMegaOpen(false);
-    setActiveSection("");
   });
 }
+
+document.addEventListener("click", function (e) {
+  if (!topbar) return;
+  if (topbar.getAttribute("data-nav-open") !== "true") return;
+  if (e.target && e.target.closest && e.target.closest("#navWrap")) return;
+  setNavOpen(false);
+});
 
 function openModal(projectKey) {
   if (!modal || !modalTitle || !modalContent) return;
