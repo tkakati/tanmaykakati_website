@@ -73,34 +73,14 @@
 
     <main id="content">
       <section id="top" class="hero">
-        <div class="container hero__grid hero__grid--v2">
-          <aside class="hero__art" aria-label="Portrait">
-            <div class="hero__portrait-wrap">
-              <img
-                class="hero__portrait"
-                src="./hero-portrait.png"
-                alt="Tanmay K"
-                width="400"
-                height="533"
-              />
-            </div>
-          </aside>
-
-          <div class="hero__copy hero__copy--animate">
-            <p class="hero__title hero__title--v2 hero__title-line1" id="heroHeadline">
-              Thinking. <span class="hero__title-accent">Rethinking.</span> Building.
-            </p>
-            <p class="hero__about" id="heroAbout" aria-hidden="true">MBA @ UW Foster · Product at Amazon &amp; Sephora · Data at Lowe’s</p>
-            <p class="hero__about hero__about--lines" id="heroAbout2" aria-hidden="true">→ Exploring how AI systems decide and how we decide about them.<br>→ Focused on solving messy problems and making sound tradeoffs.<br>→ Building product systems that are useful and usable.</p>
-          </div>
-        </div>
+        <div id="heroMotionRoot"></div>
       </section>
 
       <section id="projects" class="section">
         <div class="container">
           <div class="section__header section__header--row">
             <h2 class="section__title">Projects</h2>
-            <a id="viewAllProjectsCta" class="button button--ghost" href="projects.html">View all projects →</a>
+            <a id="viewAllProjectsCta" class="button button--ghost button--minimal" href="projects.html">View all projects →</a>
           </div>
 
           <div class="grid grid--cards" id="projectsGrid" aria-live="polite"></div>
@@ -151,6 +131,9 @@
       </div>
     </dialog>
 
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/framer-motion@12/dist/framer-motion.js" crossorigin></script>
     <script src="./script.js"></script>
   </body>
 </html>

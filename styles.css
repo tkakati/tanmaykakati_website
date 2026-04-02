@@ -2435,3 +2435,89 @@ a.card__title-link:hover{
   background: linear-gradient(135deg, rgba(219,234,254,.58) 0%, rgba(224,231,255,.56) 100%);
   color: rgba(67,56,202,.92);
 }
+
+.project-status{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  font-size: 10.5px;
+  font-weight: 620;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(59,130,246,.22);
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.project-status--in-progress{
+  background: rgba(59,130,246,.14);
+  color: rgba(30,64,175,.92);
+}
+
+/* Premium motion layer: subtle, calm, and performant */
+.motion-hero{
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .5s ease-out, transform .5s ease-out;
+}
+.motion-hero.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-reveal{
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .32s ease-out, transform .32s ease-out, box-shadow .2s ease, background .2s ease;
+  will-change: opacity, transform;
+}
+.motion-reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#projectsGrid .card--project{
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+}
+#projectsGrid .card--project:hover{
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 14px 28px rgba(15,23,42,.11);
+}
+
+#homeJournalGrid .writing-item,
+#writingGrid .writing-item{
+  transition: transform .2s ease, background-color .2s ease, border-color .2s ease, opacity .3s ease;
+}
+#homeJournalGrid .writing-item:hover,
+#writingGrid .writing-item:hover{
+  transform: translateX(2px);
+  background: rgba(255,255,255,.5);
+}
+
+.button{
+  transition: transform .2s ease, filter .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+.button:hover{
+  transform: scale(1.02);
+  filter: brightness(1.03);
+}
+.button:active{
+  transform: scale(.97);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .motion-hero,
+  .motion-reveal{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  #projectsGrid .card--project:hover,
+  #homeJournalGrid .writing-item:hover,
+  #writingGrid .writing-item:hover,
+  .button:hover,
+  .button:active{
+    transform: none;
+    filter: none;
+  }
+}

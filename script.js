@@ -125,6 +125,39 @@ const PROJECTS = [
     demo: "https://zillow-decision-dashboard-yog2.vercel.app/",
     caseStudy: "https://www.notion.so/PRD-Decision-Tracker-with-Trade-off-Summaries-Zillow-2f43bb18cbd9800285bad7477491ea8e?source=copy_link",
   },
+  {
+    id: "complete-comedy-quiz",
+    title: "Complete Comedy Quiz",
+    category: "AI",
+    summary:
+      "An AI-powered quiz engine that generates dynamic comedy questions across formats. Designed for engagement, replayability, and fast content creation.",
+    tags: ["RAG", "GAMIFICATION", "CONTENT"],
+    demo: "#",
+    caseStudy: "#",
+    inProgress: true,
+  },
+  {
+    id: "bicep-curl-form-corrector",
+    title: "Bicep Curl Form Corrector",
+    category: "AI",
+    summary:
+      "A real-time pose detection system that tracks bicep curl form and gives corrective feedback. Built to handle noisy inputs and deliver actionable guidance.",
+    tags: ["COMPUTER VISION", "REAL-TIME FEEDBACK"],
+    demo: "#",
+    caseStudy: "#",
+    inProgress: true,
+  },
+  {
+    id: "lease-acceleration-workflow",
+    title: "Lease Acceleration Workflow",
+    category: "AI",
+    summary:
+      "An agent-driven workflow that identifies why listings are not leasing and recommends targeted actions. Focused on reducing time-to-lease through structured interventions.",
+    tags: ["AGENTIC", "DECISIONING", "OPERATIONS"],
+    demo: "#",
+    caseStudy: "#",
+    inProgress: true,
+  },
 ];
 
 function escapeHtml(s) {
@@ -149,9 +182,10 @@ function renderProjectsGrid() {
     var caseStudyUrl = p.caseStudy || "#";
     var demoUrl = p.demo || "#";
     var targetAttr = ' target="_blank" rel="noopener noreferrer"';
-    var ctasHtml =
-      '<a class="card__cta card__cta--primary" href="' + escapeHtml(demoUrl) + '"' + targetAttr + '>View demo →</a>' +
-      '<a class="card__cta card__cta--secondary" href="' + escapeHtml(caseStudyUrl) + '"' + targetAttr + '>View case study →</a>';
+    var ctasHtml = p.inProgress
+      ? '<span class="project-status project-status--in-progress">In Progess</span>'
+      : '<a class="card__cta card__cta--primary" href="' + escapeHtml(demoUrl) + '"' + targetAttr + '>View demo →</a>' +
+        '<a class="card__cta card__cta--secondary" href="' + escapeHtml(caseStudyUrl) + '"' + targetAttr + '>View case study →</a>';
     return (
       '<article class="card card--project" data-filter="' + escapeHtml(slug) + '">' +
         '<div class="card__top">' +
@@ -419,6 +453,254 @@ function calculateReadTime(wordCount, intensity) {
   if (intensity === "high") speed = 180;
   var minutes = Math.max(2, Math.ceil(wordCount / speed));
   return minutes + " min read";
+}
+
+function hasMotionReact() {
+  return !!(
+    typeof window !== "undefined" &&
+    window.React &&
+    window.ReactDOM &&
+    window.Motion &&
+    window.Motion.motion
+  );
+}
+
+function getOrCreateReactRoot(el) {
+  if (!el) return null;
+  if (!el.__reactRoot) {
+    el.__reactRoot = window.ReactDOM.createRoot(el);
+  }
+  return el.__reactRoot;
+}
+
+function renderHeroWithMotion() {
+  if (!hasMotionReact()) return false;
+  var mount = document.getElementById("heroMotionRoot");
+  if (!mount) return false;
+
+  var React = window.React;
+  var h = React.createElement;
+  var motion = window.Motion.motion;
+  var root = getOrCreateReactRoot(mount);
+  if (!root) return false;
+
+  root.render(
+    h(
+      motion.div,
+      {
+        className: "container hero__grid hero__grid--v2",
+        initial: { opacity: 0, y: 12 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.5, ease: "easeOut" },
+      },
+      h(
+        "aside",
+        { className: "hero__art", "aria-label": "Portrait" },
+        h(
+          "div",
+          { className: "hero__portrait-wrap" },
+          h("img", {
+            className: "hero__portrait",
+            src: "./hero-portrait.png",
+            alt: "Tanmay K",
+            width: 400,
+            height: 533,
+          })
+        )
+      ),
+      h(
+        "div",
+        { className: "hero__copy hero__copy--animate" },
+        h(
+          "p",
+          { className: "hero__title hero__title--v2 hero__title-line1" },
+          "Thinking. ",
+          h("span", { className: "hero__title-accent" }, "Rethinking."),
+          " Building."
+        ),
+        h(
+          "p",
+          { className: "hero__about", id: "heroAbout", style: { opacity: 1 } },
+          "MBA @ UW Foster · Product at Amazon & Sephora · Data at Lowe’s"
+        ),
+        h(
+          "p",
+          { className: "hero__about hero__about--lines", id: "heroAbout2", style: { opacity: 1 } },
+          "→ Exploring how AI systems decide and how we decide about them.",
+          h("br"),
+          "→ Focused on solving messy problems and making sound tradeoffs.",
+          h("br"),
+          "→ Building product systems that are useful and usable."
+        )
+      )
+    )
+  );
+
+  return true;
+}
+
+function renderProjectsGridWithMotion(list) {
+  if (!hasMotionReact()) return false;
+  var grid = document.getElementById("projectsGrid");
+  if (!grid) return false;
+
+  var React = window.React;
+  var h = React.createElement;
+  var motion = window.Motion.motion;
+  var root = getOrCreateReactRoot(grid);
+  if (!root) return false;
+
+  function projectCard(p, index) {
+    var tags = p.tags && p.tags.length ? p.tags : [p.category];
+    var caseStudyUrl = p.caseStudy || "#";
+    var demoUrl = p.demo || "#";
+    var targetAttrs = { target: "_blank", rel: "noopener noreferrer" };
+
+    return h(
+      motion.article,
+      {
+        key: p.id || p.title || index,
+        className: "card card--project",
+        "data-filter": (p.category || "").toLowerCase().replace(/\s+/g, "-"),
+        initial: { opacity: 0, y: 8 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.2 },
+        transition: { duration: 0.28, ease: "easeOut", delay: index * 0.08 },
+        whileHover: { y: -4, scale: 1.015 },
+      },
+      h(
+        "div",
+        { className: "card__top" },
+        h("span", { className: "card__title-link" }, p.title),
+        h(
+          "div",
+          { className: "pill-row" },
+          tags.map(function (tag, i) {
+            return h("span", { key: i, className: "pill pill--soft" }, tag);
+          })
+        )
+      ),
+      h("p", { className: "card__summary" }, p.summary),
+      h(
+        "div",
+        { className: "card__ctas" },
+        p.inProgress
+          ? h("span", { className: "project-status project-status--in-progress" }, "In Progess")
+          : [
+              h(
+                motion.a,
+                Object.assign(
+                  {
+                    key: "demo",
+                    className: "card__cta card__cta--primary",
+                    href: demoUrl,
+                    whileHover: { scale: 1.02, filter: "brightness(1.03)" },
+                    whileTap: { scale: 0.97 },
+                  },
+                  targetAttrs
+                ),
+                "View demo →"
+              ),
+              h(
+                motion.a,
+                Object.assign(
+                  {
+                    key: "case",
+                    className: "card__cta card__cta--secondary",
+                    href: caseStudyUrl,
+                    whileHover: { scale: 1.01 },
+                    whileTap: { scale: 0.97 },
+                  },
+                  targetAttrs
+                ),
+                "View case study →"
+              ),
+            ]
+      )
+    );
+  }
+
+  root.render(
+    h(
+      window.Motion.AnimatePresence,
+      { mode: "wait" },
+      list.map(projectCard)
+    )
+  );
+
+  return true;
+}
+
+function renderWritingListWithMotion(targetId, posts) {
+  if (!hasMotionReact()) return false;
+  var grid = document.getElementById(targetId);
+  if (!grid) return false;
+
+  var React = window.React;
+  var h = React.createElement;
+  var motion = window.Motion.motion;
+  var root = getOrCreateReactRoot(grid);
+  if (!root) return false;
+
+  function row(post, index) {
+    var link = post.link || "#";
+    var tag = post.category || "Essay / Opinion";
+    var publishedDate = post.publishedDate || "";
+    var readTime = calculateReadTime(post.wordCount, post.intensity) || post.readTime || "";
+    var filterValue = tag.toLowerCase().replace(/\s+/g, "-");
+
+    return h(
+      motion.article,
+      {
+        key: link || post.title || index,
+        className: "writing-item",
+        "data-filter": filterValue,
+        "data-link": link,
+        tabIndex: 0,
+        role: "link",
+        "aria-label": post.title,
+        initial: { opacity: 0, y: 8 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.2 },
+        transition: { duration: 0.24, ease: "easeOut", delay: index * 0.06 },
+        whileHover: { x: 2 },
+      },
+      h(
+        "div",
+        { className: "writing-item__card" },
+        h(
+          "div",
+          { className: "writing-item__header-row" },
+          h(
+            "div",
+            { className: "writing-item__meta-row" },
+            h("span", { className: "writing-item__meta-date" }, publishedDate),
+            h("span", { className: "writing-item__meta-read" }, readTime)
+          ),
+          h(
+            "h3",
+            { className: "writing-item__title" },
+            h(
+              "a",
+              { className: "writing-item__title-link", href: link },
+              post.title
+            )
+          ),
+          h("span", { className: "writing-item__tag-pill" }, tag)
+        )
+      )
+    );
+  }
+
+  root.render(
+    h(
+      window.Motion.AnimatePresence,
+      { mode: "wait" },
+      posts.map(row)
+    )
+  );
+
+  return true;
 }
 
 function renderWritingGrid() {
@@ -765,13 +1047,29 @@ function initFrameworkFilters() {
 }
 
 function initProjectsPage() {
-  renderProjectsGrid();
-  renderHomeJournalGrid();
+  var path = window.location.pathname || "";
+  var isHome = path === "" || path === "/" || /index\.html$/i.test(path);
+  var projectList = isHome ? PROJECTS.slice(0, 3) : PROJECTS;
+
+  if (hasMotionReact()) {
+    renderHeroWithMotion();
+    if (!renderProjectsGridWithMotion(projectList)) renderProjectsGrid();
+    var featuredLinks = [
+      "you-dont-have-an-ai-problem-you-have-a-workflow-problem.html",
+      "best-prompt-is-a-system-not-a-sentence.html",
+      "good-enough-ai-beats-perfect-ai.html",
+    ];
+    var featured = featuredLinks.map(function (link) {
+      return WRITING_POSTS.find(function (post) { return post.link === link; });
+    }).filter(Boolean);
+    if (!renderWritingListWithMotion("homeJournalGrid", featured)) renderHomeJournalGrid();
+  } else {
+    renderProjectsGrid();
+    renderHomeJournalGrid();
+  }
   // Temporarily disabling tab filters; keep all cards visible.
   var cta = document.getElementById("viewAllProjectsCta");
   if (cta) {
-    var path = window.location.pathname || "";
-    var isHome = path === "" || path === "/" || /index\.html$/i.test(path);
     if (isHome) {
       cta.style.display = PROJECTS.length > 3 ? "inline-block" : "none";
     }
@@ -917,7 +1215,7 @@ function initWritingFilters() {
 }
 
 function initWritingPage() {
-  renderWritingGrid();
+  if (!renderWritingListWithMotion("writingGrid", WRITING_POSTS)) renderWritingGrid();
   // Temporarily disabling tab filters; keep all cards visible.
 
   var grid = document.getElementById("writingGrid");
@@ -940,16 +1238,65 @@ function initWritingPage() {
     if (href) window.location.href = href;
   });
 }
+
+function initPremiumMotion() {
+  if (hasMotionReact()) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var hero = document.querySelector(".hero");
+  if (hero) {
+    hero.classList.add("motion-hero");
+    requestAnimationFrame(function () {
+      hero.classList.add("is-visible");
+    });
+  }
+
+  var projectCards = Array.prototype.slice.call(document.querySelectorAll("#projectsGrid .card--project"));
+  var journalRows = Array.prototype.slice.call(
+    document.querySelectorAll("#homeJournalGrid .writing-item, #writingGrid .writing-item")
+  );
+
+  function markReveal(items, stepDelay) {
+    items.forEach(function (el, index) {
+      el.classList.add("motion-reveal");
+      el.style.transitionDelay = (index * stepDelay).toFixed(2) + "s";
+    });
+  }
+
+  markReveal(projectCards, 0.08);
+  markReveal(journalRows, 0.06);
+
+  var revealTargets = projectCards.concat(journalRows);
+  if (!revealTargets.length) return;
+
+  var observer = new IntersectionObserver(
+    function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        obs.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  revealTargets.forEach(function (el) {
+    observer.observe(el);
+  });
+}
+
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", function () {
     initProjectsPage();
     if (document.getElementById("frameworksGrid")) initFrameworksPage();
     if (document.getElementById("writingGrid")) initWritingPage();
     renderAppliedInPracticeCards();
+    initPremiumMotion();
   });
 } else {
   initProjectsPage();
   if (document.getElementById("frameworksGrid")) initFrameworksPage();
   if (document.getElementById("writingGrid")) initWritingPage();
   renderAppliedInPracticeCards();
+  initPremiumMotion();
 }
