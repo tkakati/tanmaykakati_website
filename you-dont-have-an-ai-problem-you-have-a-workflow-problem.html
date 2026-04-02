@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <title>You Don’t Have an AI Problem. You Have a Workflow Problem. | Writing</title>
+    <title>You Don’t Have an AI Problem. You Have a Workflow Problem. | Journal</title>
     <meta
       name="description"
       content="A short essay on why many underperforming AI features are workflow failures, not model failures."
@@ -54,17 +54,25 @@
 
       function WorkflowCallout({ children }) {
         return (
-          <div className="my-12 rounded-xl border border-zinc-200/80 bg-white/65 px-6 py-5">
-            <div className="text-sm font-semibold tracking-wide text-zinc-700">Practical lens</div>
-            <div className="mt-3 text-zinc-800 leading-relaxed">{children}</div>
+          <div className="my-12">
+            <div className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+              Practical lens
+            </div>
+            <blockquote className="border-l border-l-accentMuted/70 pl-4 pr-2 font-serif italic text-[1.18rem] leading-relaxed text-zinc-900">
+              {children}
+            </blockquote>
           </div>
         );
       }
 
       function PlaceholderVisual() {
         return (
-          <div className="my-12 rounded-xl border border-zinc-200/80 bg-zinc-50/70 px-5 py-6 text-sm text-zinc-600">
-            [Optional image: Model output inside a broken workflow vs inside a well designed workflow]
+          <div className="my-12 overflow-hidden rounded-xl border border-zinc-200/80 bg-white/85">
+            <img
+              src="assets/images/workflow-works-diagram.png"
+              alt="Diagram comparing a broken pipeline and a well-designed pipeline, showing that the workflow creates value."
+              className="block h-auto w-full"
+            />
           </div>
         );
       }
@@ -102,7 +110,7 @@
                   href="writing.html"
                   className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
                 >
-                  ← Back to writings
+                  ← Back to Journal
                 </a>
               </div>
 
@@ -115,152 +123,114 @@
                 <span aria-hidden="true" className="text-zinc-400">·</span>
                 <span className="font-medium text-zinc-700">Mar 31, 2026</span>
                 <span aria-hidden="true" className="text-zinc-400">·</span>
-                <span className="font-medium text-zinc-700">4 min read</span>
+                <span className="font-medium text-zinc-700">3 min read</span>
               </div>
 
               <article className="mt-10">
                 <p className="text-zinc-800 leading-relaxed">
-                  When an AI feature underperforms, teams often blame the model first.
+                  While building HireFeed, I kept thinking the next lift would come from ranking quality.
+                  The signals looked better, the extraction improved, and the output got cleaner.
+                  Users still hesitated.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  The instinct is predictable.
-                  Output quality looks uneven, so the answer feels obvious.
-                  Upgrade the model, refine the prompt, tune the temperature, rerun evals.
-                  Sometimes that helps.
-                  Often it does not fix the real problem.
+                  That was the useful correction for me.
+                  The main issue was not whether the system could find something interesting.
+                  It was whether someone could trust it enough to do something with it.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  In many products, failure starts before the model and ends after the model.
-                  Context is incomplete.
-                  Handoffs are unclear.
-                  Review is missing.
-                  The user receives output but has no clear next step.
-                  At that point, a stronger model only produces cleaner confusion.
+                  I started calling that the <strong>trust to action gap</strong>.
+                  It is the distance between seeing an output and feeling ready to act on it.
+                  In my case, that gap mattered more than another small gain in model quality.
                 </p>
 
                 <WorkflowCallout>
-                  AI rarely creates value in isolation.
-                  It creates value when embedded in a process people can trust and use repeatedly.
+                  The product got better when I stopped asking whether the output was smart and started asking whether it gave someone a safe next step.
                 </WorkflowCallout>
 
                 <p className="text-zinc-800 leading-relaxed">
-                  This is a workflow design issue, not just a model issue.
-                  Good workflows define what goes in, what happens next, and who acts on the result.
-                  They reduce ambiguity at each step.
-                  They make output usable, not just impressive.
+                  HireFeed could do a few things well.
+                  It could pick up early hiring signals, extract useful intent, and rank posts in a way that usually matched what I would have prioritized manually.
+                  On paper, that looked like progress.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Support tools show this clearly.
-                  A model can generate solid draft replies.
-                  But if the agent cannot see evidence, edit quickly, or escalate with one click, response quality will not matter much.
-                  Agents revert to old macros because macros are predictable.
+                  What I saw in testing was different.
+                  People would scan the ranked list, pause on a result, then leave without reaching out.
+                  The output created interest.
+                  It did not create movement.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Analytics products have the same pattern.
-                  A model can summarize dashboard movement.
-                  If the summary is detached from source metrics and action paths, teams ignore it.
-                  They still open spreadsheets because that path is slower but controllable.
+                  The drop-off was not subtle.
+                  Users could see that a post looked relevant, but they could not quickly tell why it ranked highly, whether the source still held up, or whether it was worth acting on now.
+                  The system stopped at “maybe.”
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Recruiting workflows offer another example.
-                  AI ranking can surface strong candidates.
-                  But if hiring managers cannot inspect why someone is ranked high, trust drops.
-                  Without trust, adoption collapses.
-                  Manual review returns.
+                  That confusion showed up in three places.
+                  The ranking felt opaque, the source context required extra checking, and the next step was too detached from the result.
+                  Even when the signal was good, the workflow felt unfinished.
                 </p>
 
                 <PlaceholderVisual />
 
                 <p className="text-zinc-800 leading-relaxed">
-                  The same issue shows up in internal content and planning tools.
-                  Teams ask for generated plans, docs, and updates.
-                  Output appears quickly.
-                  Then work stalls because ownership is unclear and edit flow is weak.
-                  No one knows whether to accept, revise, or route the output.
-                  That is a workflow gap, not a language gap.
+                  The most useful change was not another ranking pass.
+                  It was making the reasoning visible at the moment of decision.
+                  Once I exposed why something ranked well and showed the source context beside it, hesitation dropped.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  This is why adoption, trust, speed, and usability often matter more than raw output quality.
-                  If users cannot rely on the system in normal work conditions, they stop using it.
-                  If they stop using it, quality gains do not compound.
+                  The second change was bringing action closer.
+                  When outreach was one step away instead of a separate mental handoff, the product started to feel usable.
+                  The insight did not just look right.
+                  It became easier to act on while the context was still fresh.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  A practical correction is to design the workflow first, then place AI inside clear decision points.
-                  Decide where generation helps and where deterministic logic should stay in control.
-                  Define who owns review.
-                  Define what gets auto accepted and what always needs human confirmation.
-                  This reduces uncertainty and keeps accountability clear.
+                  That is what the trust to action gap helped me see.
+                  A good output is not enough if the user still has to reconstruct the logic, verify the evidence, and decide the next step on their own.
+                  That extra work is where momentum dies.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Teams also need explicit interface design around AI output.
-                  Show source context.
-                  Show confidence signals where possible.
-                  Make edits easy.
-                  Keep regenerate and rollback visible.
-                  Users trust systems they can steer.
-                  They avoid systems that behave like black boxes.
+                  The clearer framing for me became three questions.
+                  What is this?
+                  Why should I trust it?
+                  What can I do next without leaving this flow?
                 </p>
 
                 <PullQuote>
-                  AI exposes broken workflows.
-                  It does not repair them.
+                  The model can produce the signal.
+                  The workflow decides whether anyone uses it.
                 </PullQuote>
 
                 <p className="text-zinc-800 leading-relaxed">
-                  Product teams should start diagnosis with workflow checkpoints.
-                  Where does context enter?
-                  Where does verification happen?
-                  Who approves?
-                  What is the fallback path when confidence is low?
-                  How quickly can a user correct output and move on?
+                  I would measure that gap with behavior, not just output quality.
+                  Time to first useful action mattered more than whether the result looked polished.
+                  So did the share of outputs that actually led to a next step.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  These questions are practical and measurable.
-                  You can instrument time to first useful result.
-                  You can track edit burden.
-                  You can monitor completion rate after generated output appears.
-                  You can measure how often users abandon the AI path and return to manual flow.
-                  Those metrics usually reveal the real bottleneck.
+                  The most revealing metrics for this kind of system are simple.
+                  How often does someone act after seeing a result?
+                  Where do they drop off?
+                  How often do they open source context before moving?
+                  How often do they abandon the AI path and go back to manual review?
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Better models still matter.
-                  But model gains should be applied inside a workflow that already works.
-                  Otherwise you pay more for output that cannot be operationalized.
-                  That is why teams feel stuck even after model upgrades.
+                  If I had focused only on output quality, I would have missed the real issue.
+                  The problem showed up in hesitation, not just in correctness.
+                  The system could be right and still be hard to use.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  This framing also helps with prioritization.
-                  Instead of asking only “how do we improve answer quality,” ask “where is work currently getting blocked.”
-                  Sometimes the right fix is not a new model call.
-                  It is better context collection, stronger handoff logic, or a faster review surface.
-                  These changes are less flashy, but they often move core metrics faster.
-                  They also lower rollout risk.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  The strongest AI products feel simple because the workflow is clear.
-                  The right context is available.
-                  The output is constrained.
-                  The review path is obvious.
-                  The next action is built in.
-                  Users get value without needing to interpret the system.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  So when your AI feature struggles, pause before blaming model quality.
-                  Check the process around it.
-                  In most real products, the workflow decides whether AI becomes useful.
+                  That is the note I keep coming back to now.
+                  If the output is good but the next step is unclear, the system is not done.
+                  The workflow is what turns signal into action.
                 </p>
               </article>
             </div>

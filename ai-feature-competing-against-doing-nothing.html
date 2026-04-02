@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <title>Your AI Feature Is Competing Against Doing Nothing | Writing</title>
+    <title>Your AI Feature Is Competing Against Doing Nothing | Journal</title>
     <meta
       name="description"
       content="A short essay on why most AI features compete against habit and inertia, and what product teams should optimize for to drive adoption."
@@ -54,9 +54,13 @@
 
       function ProductCallout({ children }) {
         return (
-          <div className="my-12 rounded-xl border border-zinc-200/80 bg-white/65 px-6 py-5">
-            <div className="text-sm font-semibold tracking-wide text-zinc-700">Adoption reality</div>
-            <div className="mt-3 text-zinc-800 leading-relaxed">{children}</div>
+          <div className="my-12">
+            <div className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+              Adoption reality
+            </div>
+            <blockquote className="border-l border-l-accentMuted/70 pl-4 pr-2 font-serif italic text-[1.18rem] leading-relaxed text-zinc-900">
+              {children}
+            </blockquote>
           </div>
         );
       }
@@ -94,7 +98,7 @@
                   href="writing.html"
                   className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
                 >
-                  ← Back to writings
+                  ← Back to Journal
                 </a>
               </div>
 
@@ -107,142 +111,110 @@
                 <span aria-hidden="true" className="text-zinc-400">·</span>
                 <span className="font-medium text-zinc-700">Mar 19, 2026</span>
                 <span aria-hidden="true" className="text-zinc-400">·</span>
-                <span className="font-medium text-zinc-700">4 min read</span>
+                <span className="font-medium text-zinc-700">2 min read</span>
               </div>
 
               <article className="mt-10">
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+                  What I Expected
+                </h2>
                 <p className="text-zinc-800 leading-relaxed">
-                  Product teams like to think users compare features rationally.
+                  I expected people to compare output quality and switch if it was better.
+                  I assumed a clean demo would do most of the work.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  We imagine a neat decision tree.
-                  A user sees our AI feature, compares it to other tools, and picks the best one.
-                  Better quality should win.
-                  Better model should win.
-                  Better benchmark should win.
+                  What I noticed was the opposite.
+                  Even when the output looked stronger, people often did nothing.
+                  They went back to the path that felt cheapest in time and effort.
+                </p>
+
+                <h2 className="mt-10 text-sm font-semibold uppercase tracking-wide text-zinc-500">
+                  The Surprise
+                </h2>
+                <p className="mt-6 text-zinc-800 leading-relaxed">
+                  In my case, the strongest competitor was inertia.
+                  A saved template, a quick search, or a quick message to a teammate felt safer than trying something new.
+                  Doing nothing was often the default.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  But that is rarely what happens in real products.
-                  Most users are not comparing your AI feature to another AI feature.
-                  They are comparing it to whatever they already do today.
-                  That might be a spreadsheet, saved template, browser search, keyboard shortcut, teammate message, or no action at all.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  In other words, your strongest competitor is usually inertia.
+                  That made the core idea clearer.
+                  Your AI feature is not replacing the best tool.
+                  It is replacing the easiest habit.
                 </p>
 
                 <ProductCallout>
-                  If your feature does not beat the path of least resistance, users will not switch.
-                  They will stay with old habits, even when your output is better.
+                  In my tests, the moment the AI flow asked for extra steps, users quietly opted out.
                 </ProductCallout>
 
                 <p className="text-zinc-800 leading-relaxed">
-                  This is why impressive AI often underperforms after launch.
-                  Teams optimize for what looks strong in demos.
-                  Users optimize for what costs the least effort in a busy day.
-                  Those are different optimization functions.
+                  The pattern showed up most clearly in writing workflows.
+                  I saw people take a good draft, hesitate, and then reopen an old template.
+                  The output was better, but the switch cost felt higher.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Consider writing workflows.
-                  An AI drafting tool might generate cleaner first drafts than a manual process.
-                  But if it takes longer to prompt, review, and edit than opening an old template, users go back to the template.
-                  Not because the AI is bad.
-                  Because the old path is easier.
+                  Planning showed the same friction.
+                  When a suggestion required extra verification or reformatting, people went back to their own docs.
+                  The hesitation was about control, not about raw quality.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Planning tools show the same pattern.
-                  A team may ship a feature that suggests perfect task breakdowns.
-                  If people cannot quickly adjust the output or trust where it came from, they default to whiteboards and existing docs.
-                  Familiar tools win when confidence is low.
+                  I saw it again in light recruiting experiments.
+                  A ranked list looked helpful, but if I could not explain the ranking quickly, I reached for manual review.
+                  The fallback felt slower but safer.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Recruiting products are another clear case.
-                  A model can rank candidates well.
-                  But if hiring managers cannot understand the reason behind rankings, they revert to manual review.
-                  Managers do not need perfect automation.
-                  They need faster decisions they can defend.
+                  The cost of switching was not just time.
+                  It was uncertainty.
+                  If I could not see why the output looked the way it did, I hesitated and defaulted to the old habit.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Support and analytics teams behave similarly.
-                  They might accept small quality tradeoffs if the system is quick, stable, and easy to correct.
-                  They reject higher quality output when it arrives late or feels risky.
+                  That is why “doing nothing” ends up as the incumbent.
+                  It is low effort, low risk, and already understood.
                 </p>
 
                 <PullQuote>
-                  Your AI feature is not replacing the best tool.
-                  It is replacing the easiest habit.
+                  Your strongest competitor is inertia.
+                  Doing nothing is the incumbent.
                 </PullQuote>
 
                 <p className="text-zinc-800 leading-relaxed">
-                  This changes what product teams should optimize for.
-                  Start with adoption friction.
-                  How many steps before a user gets value?
-                  How much setup is required?
-                  How fast is first useful result?
+                  What changed for me was where I spent time.
+                  I stopped polishing output first and started removing friction from the switch.
+                  If the first useful action was not fast, adoption stalled.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Then optimize for trust and editability.
-                  Can users see what informed the output?
-                  Can they fix errors without starting over?
-                  Can they keep control when the model is wrong?
-                  If not, your feature will feel expensive to use.
+                  I focused on trust and editability.
+                  I made it easier to see what informed the output and easier to correct it without starting over.
+                  That reduced hesitation more than another round of model tuning.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Integration is another non negotiable.
-                  AI that sits outside the core workflow usually becomes optional.
-                  Optional features are easy to ignore.
-                  Features wired into existing flow have a better chance of repeated use.
+                  Integration mattered more than I expected.
+                  Anything that lived outside the core flow was easy to ignore.
+                  The closer the feature sat to the existing workflow, the more it got used.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  This is why time to first value is such a strong metric.
-                  If a new user cannot get a useful result in minutes, adoption will stall.
-                  Teams then misread the problem as awareness or training.
-                  In many cases, the issue is simpler.
-                  The feature asks the user to do too much before value appears.
+                  The metric that clarified it most was time to first useful action.
+                  If the first win took too long or felt risky, people stopped trying.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Pricing and permission models also matter.
-                  If users fear that each click is expensive, they reduce usage.
-                  If legal or compliance review is unclear, teams avoid the tool.
-                  If managers cannot audit decisions, adoption slows.
-                  Product quality includes these operating realities.
+                  I used that as a filter for every change.
+                  If it added steps, it needed to pay back immediately.
+                  If it removed steps, usage tended to rise on its own.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  The teams that win here usually run small experiments on workflow friction.
-                  They test default prompts, inline edits, confidence indicators, and approval flows.
-                  They track activation, repeat usage, and task completion time.
-                  They do not just track model accuracy.
-                  They track whether the feature changed behavior.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  None of this means model quality is irrelevant.
-                  It means quality alone is not enough.
-                  Adoption comes from a full system that is useful, reliable, and low friction under normal working conditions.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  If you want honest product strategy for AI, reframe the battlefield.
-                  Do not ask whether your feature beats the leading AI app.
-                  Ask whether it beats current behavior.
-                  Ask whether it beats doing nothing.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Doing nothing is often the incumbent.
-                  Your feature has to earn the switch.
+                  This is the realization I keep.
+                  Output quality can be great and still lose to inertia.
+                  The product only wins when switching feels safer than staying put.
                 </p>
               </article>
             </div>

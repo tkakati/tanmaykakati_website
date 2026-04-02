@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <title>“Good Enough” AI Beats “Perfect” AI | Writing</title>
+    <title>“Good Enough” AI Beats “Perfect” AI | Journal</title>
     <meta
       name="description"
       content="A short essay on why fast, dependable, useful AI often creates more product value than chasing perfect model output."
@@ -54,9 +54,13 @@
 
       function ProgressCallout({ children }) {
         return (
-          <div className="my-12 rounded-xl border border-zinc-200/80 bg-white/65 px-6 py-5">
-            <div className="text-sm font-semibold tracking-wide text-zinc-700">Practical reminder</div>
-            <div className="mt-3 text-zinc-800 leading-relaxed">{children}</div>
+          <div className="my-12">
+            <div className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+              Practical reminder
+            </div>
+            <blockquote className="border-l border-l-accentMuted/70 pl-4 pr-2 font-serif italic text-[1.18rem] leading-relaxed text-zinc-900">
+              {children}
+            </blockquote>
           </div>
         );
       }
@@ -94,7 +98,7 @@
                   href="writing.html"
                   className="text-sm text-zinc-600 hover:text-zinc-900 transition-colors"
                 >
-                  ← Back to writings
+                  ← Back to Journal
                 </a>
               </div>
 
@@ -107,129 +111,86 @@
                 <span aria-hidden="true" className="text-zinc-400">·</span>
                 <span className="font-medium text-zinc-700">Mar 11, 2026</span>
                 <span aria-hidden="true" className="text-zinc-400">·</span>
-                <span className="font-medium text-zinc-700">3 min read</span>
+                <span className="font-medium text-zinc-700">1 min read</span>
               </div>
 
               <article className="mt-10">
                 <p className="text-zinc-800 leading-relaxed">
-                  Teams chase perfect AI because demos reward perfection.
+                  What I expected was that the best output would win.
+                  If the result looked perfect, people would adopt it.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  In a demo, you pick a clean prompt, show the best output, and everyone nods.
-                  The room sees quality. The room does not see latency spikes, retry behavior, broken edge cases, or review overhead.
-                  Demo logic says better output wins.
-                  Production logic says the system that moves work forward wins.
+                  What surprised me was how often that failed.
+                  When responses took ten seconds instead of two, people stopped waiting.
+                  When the result needed extra fixing, they returned to older flows.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  That distinction matters more than most teams admit.
-                  Many product roadmaps overinvest in model quality and underinvest in what users feel every day:
-                  response time, consistency, transparency, and how easy it is to approve or edit output.
+                  In practice, that showed up as a simple tradeoff.
+                  A fast, usable answer got used.
+                  A better but slower answer got ignored.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  In practice, users rarely need perfect AI.
-                  They need useful AI that is fast and dependable.
-                  They need confidence that the system will not fail at random moments.
-                  They need to see what happened and fix it quickly when needed.
+                  The most visible example for me was support drafts.
+                  A 95 percent answer in two seconds beat a 99 percent answer in ten.
+                  People would rather correct a small mistake than lose the flow.
                 </p>
 
                 <ProgressCallout>
-                  Users rarely reward perfect AI.
-                  They reward fast progress.
+                  Good enough won when it kept momentum.
                 </ProgressCallout>
 
                 <p className="text-zinc-800 leading-relaxed">
-                  There is a real tradeoff between perfect quality and usability.
-                  Chasing a few extra points of model performance can add latency, cost, and complexity.
-                  It can force extra model calls, heavier prompts, bigger context windows, and more fragile orchestration.
-                  Each improvement might look rational in isolation.
-                  Together they can make the product slower and less trusted.
+                  I saw the same pattern in writing tools.
+                  A reliable draft that appeared quickly got edited and shipped.
+                  A more polished draft that appeared late often got skipped.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Support systems make this obvious.
-                  A response that is 95 percent correct in two seconds often beats a 99 percent response in ten seconds.
-                  Agents need momentum.
-                  They can quickly correct a small issue if the draft is grounded and reviewable.
-                  They cannot recover time lost waiting on every ticket.
+                  Analytics was another place it showed up.
+                  A quick, directional summary led to action.
+                  A perfect narrative that arrived later did not.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Search products show the same pattern.
-                  Users prefer results that are good enough and immediate over results that are theoretically better but delayed.
-                  Relevance matters, but speed shapes behavior.
-                  If results are slow, users change tools before they compare quality.
+                  The pattern became hard to ignore.
+                  When I chased perfect output, I added steps, latency, and review overhead.
+                  Usage dropped even as quality improved.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Writing assistants are another example.
-                  Most people do not want a perfect paragraph on the first try.
-                  They want a solid starting point they can edit.
-                  The assistant that provides a reliable draft quickly often creates more value than one that aims for perfection and feels heavy.
+                  What changed for me was where I focused.
+                  I started optimizing for time to first usable action and ease of correction.
+                  That improved real usage faster than another round of tuning.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Internal analytics tools follow similar economics.
-                  Operators need directional insight fast so they can act.
-                  They usually do not need a perfect narrative generated after long processing.
-                  They need trustworthy summaries, clear links to source data, and a path to dig deeper.
+                  That shift made the tradeoff tangible.
+                  A fast, reviewable output that people trusted created progress.
+                  A perfect output that arrived late created friction.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  There is also a business reason to favor good enough systems.
-                  Predictable systems are easier to price, support, and scale.
-                  They produce fewer surprises in cloud spend and fewer incidents for the team.
-                  That stability gives product leaders room to iterate on real user problems instead of firefighting model behavior.
+                  I stopped framing it as quality versus quality.
+                  It was speed, control, and flow versus theoretical perfection.
                 </p>
 
                 <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Good enough design does not mean low standards.
-                  It means sequencing.
-                  First, ship a reliable baseline that helps users complete important tasks.
-                  Then improve quality where it clearly changes outcomes.
-                  This keeps the roadmap tied to user value instead of benchmark vanity.
+                  That is when the line landed for me.
+                  Users do not buy perfection.
+                  They buy progress.
                 </p>
 
                 <PullQuote>
-                  The best AI feature is not the smartest output.
-                  It is the one users trust enough to use every day.
+                  Users do not buy perfection.
+                  They buy progress.
                 </PullQuote>
 
                 <p className="text-zinc-800 leading-relaxed">
-                  This is why dependable systems often compound faster than perfect systems.
-                  Dependable systems earn repeated use.
-                  Repeated use creates feedback.
-                  Feedback improves the product.
-                  That loop is a stronger moat than a one time output quality advantage.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Product teams should optimize for progress per minute, not output purity.
-                  Ask practical questions.
-                  Can users understand why the system responded this way?
-                  Can they fix mistakes without friction?
-                  Can they rely on it in normal, messy conditions?
-                  Does it integrate into the workflow they already have?
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  None of this is an argument against quality.
-                  Quality matters.
-                  It just needs to be balanced with latency, reliability, and controllability.
-                  Real products win on combined utility, not on a single model metric.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  The contrarian truth is simple.
-                  Good enough AI often wins because it ships, scales, and gets used.
-                  Perfect AI often loses because it is slow, expensive, and brittle in the real world.
-                </p>
-
-                <p className="mt-6 text-zinc-800 leading-relaxed">
-                  Users do not buy perfection.
-                  They buy progress.
+                  The thing that shipped, got used, and improved kept winning.
+                  The thing that waited for perfection did not.
                 </p>
               </article>
             </div>

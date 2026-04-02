@@ -171,59 +171,87 @@ var FRAMEWORKS = [
   {
     title: "FRAMES - Non AI System Design Framework",
     category: "ai-systems",
-    description: "A structured approach to designing scalable product systems.",
-    steps: ["Frame the problem clearly", "Define requirements and constraints", "Design system architecture and flow", "Evaluate tradeoffs and evolution"],
+    section: "DEFINE",
+    description: "Map the system before adding AI so the real bottleneck is visible.",
+    steps: [
+      "Clarify what must be true vs what can flex",
+      "Map handoffs and failure points",
+      "Identify the smallest change that unlocks the outcome",
+    ],
     link: "/frameworks/frames",
+  },
+  {
+    title: "PRD to System Framework",
+    category: "decisioning",
+    section: "DEFINE",
+    description: "Turn a fuzzy idea into a buildable system with clear decisions.",
+    steps: [
+      "Define the user action and system response",
+      "Draw the workflow and the edge cases",
+      "List what not to build and why",
+      "Set outcomes you can measure fast",
+    ],
+    link: "",
   },
   {
     title: "LLM System Design Framework",
     category: "ai-systems",
-    description: "A structured approach to designing LLM-powered systems with context, prompting, and reliable generation.",
+    section: "BUILD",
+    description: "Make LLM behavior reliable inside a real product flow.",
     steps: [
-      "Define the LLM’s role clearly",
-      "Structure inputs and context",
-      "Design prompts and generation flow",
-      "Ensure reliability, evaluation, and feedback",
+      "Decide what the model owns vs what stays deterministic",
+      "Shape inputs so the model sees the right state",
+      "Design prompts as interfaces, not magic",
     ],
     link: "/frameworks/llm-system-design-framework",
   },
   {
-    title: "Analytics Framework",
-    category: "ai-systems",
-    description: "Measure what matters across product outcomes and AI system performance.",
-    steps: [
-      "Define success clearly",
-      "Track user behavior across the funnel",
-      "Measure system and LLM performance",
-      "Evaluate impact and iterate",
-    ],
-    link: "/frameworks/analytics-framework",
-  },
-  {
     title: "Agentic System Design Framework",
     category: "ai-systems",
-    description:
-      "A structured approach to designing agent-driven systems that plan, act, evaluate, and iterate under uncertainty.",
+    section: "BUILD",
+    description: "Handle uncertainty when the path can’t be defined upfront.",
     steps: [
-      "Define agent objective and stopping criteria",
-      "Design planning and control policy",
-      "Structure tools, memory, and state",
-      "Build evaluation loops and feedback signals",
+      "Set a clear objective and stopping rule",
+      "Constrain tools, memory, and state",
+      "Add checkpoints to keep behavior stable",
     ],
     link: "/frameworks/agentic-system-design-framework",
   },
   {
+    title: "Analytics Framework",
+    category: "ai-systems",
+    section: "MEASURE",
+    description: "Measure whether the system moved outcomes, not just outputs.",
+    steps: [
+      "Define the real success event",
+      "Track drop-off after the AI step",
+      "Separate model quality from product impact",
+    ],
+    link: "/frameworks/analytics-framework",
+  },
+  {
     title: "Agentic Systems Analytics Framework",
     category: "ai-systems",
-    description:
-      "A structured approach to measuring how agentic systems make decisions, iterate, and produce useful outcomes.",
+    section: "MEASURE",
+    description: "Evaluate agent loops when outcomes depend on decisions over time.",
     steps: [
-      "Measure decision quality across the system loop",
-      "Track efficiency of iterations and execution",
-      "Evaluate alignment between system outputs and outcomes",
-      "Balance quality, cost, and reliability",
+      "Measure decision quality across loop turns",
+      "Track iteration cost, latency, and failures",
+      "Compare outputs to real outcomes",
     ],
     link: "/frameworks/agentic-systems-analytics",
+  },
+  {
+    title: "GTM Adoption Framework",
+    category: "discovery",
+    section: "ADOPT",
+    description: "Replace default behavior and earn the first repeat action.",
+    steps: [
+      "Name the default habit you are replacing",
+      "Reduce steps to first value",
+      "Build trust signals where users hesitate",
+    ],
+    link: "",
   },
 ];
 
@@ -269,16 +297,36 @@ function renderAppliedInPracticeCards() {
 function renderFrameworksGrid() {
   var grid = document.getElementById("frameworksGrid");
   if (!grid || !FRAMEWORKS.length) return;
-  var html = FRAMEWORKS.map(function (f) {
+  var order = ["DEFINE", "BUILD", "MEASURE", "ADOPT"];
+  var html = order.map(function (section) {
+    var items = FRAMEWORKS.filter(function (f) {
+      return f.section === section;
+    });
+    if (!items.length) return "";
+    var cardsHtml = items.map(function (f) {
+    var hasLink = !!f.link;
     var stepsHtml = (f.steps || []).map(function (s) {
       return "<li>" + escapeHtml(s) + "</li>";
     }).join("");
+    var cardAttrs =
+      'class="card card--framework" data-filter="' + escapeHtml(f.category) + '" aria-label="' + escapeHtml(f.title) + '"' +
+      (hasLink ? ' data-link="' + escapeHtml(f.link) + '" tabindex="0" role="link"' : "");
+    var titleHtml = hasLink
+      ? '<h3 class="framework-card__title"><a class="framework-card__title-link" href="' + escapeHtml(f.link) + '">' + escapeHtml(f.title) + "</a></h3>"
+      : '<h3 class="framework-card__title">' + escapeHtml(f.title) + "</h3>";
     return (
-      '<article class="card card--framework" data-filter="' + escapeHtml(f.category) + '" data-link="' + escapeHtml(f.link) + '" tabindex="0" role="link" aria-label="' + escapeHtml(f.title) + '">' +
-        '<h3 class="framework-card__title"><a class="framework-card__title-link" href="' + escapeHtml(f.link) + '">' + escapeHtml(f.title) + "</a></h3>" +
+      "<article " + cardAttrs + ">" +
+        titleHtml +
         '<p class="framework-card__desc">' + escapeHtml(f.description) + "</p>" +
         '<ul class="bullets bullets--tight">' + stepsHtml + "</ul>" +
       "</article>"
+    );
+    }).join("");
+    return (
+      '<div class="frameworks-section" data-count="' + items.length + '">' +
+        '<p class="frameworks-section__label">' + section + "</p>" +
+        '<div class="frameworks-row">' + cardsHtml + "</div>" +
+      "</div>"
     );
   }).join("");
   grid.innerHTML = html;
@@ -290,11 +338,11 @@ var WRITING_POSTS = [
     title: "You Don’t Have an AI Problem. You Have a Workflow Problem.",
     category: "Workflow Design",
     description:
-      "Many AI features fail because workflow design is weak. The model often is not the core issue.",
-    intensity: "high",
-    wordCount: 701,
+      "Notes from building HireFeed: good signals were not enough until trust, context, and next action sat in the same flow.",
+    intensity: "low",
+    wordCount: 589,
     publishedDate: "Mar 31, 2026",
-    readTime: "4 min read",
+    readTime: "3 min read",
     link: "you-dont-have-an-ai-problem-you-have-a-workflow-problem.html",
   },
   {
@@ -302,64 +350,64 @@ var WRITING_POSTS = [
     category: "AI Systems",
     description:
       "Strong AI output depends on context, retrieval, constraints, and feedback loops far more than a single clever prompt.",
-    intensity: "high",
-    wordCount: 707,
+    intensity: "low",
+    wordCount: 440,
     publishedDate: "Mar 26, 2026",
-    readTime: "4 min read",
+    readTime: "2 min read",
     link: "best-prompt-is-a-system-not-a-sentence.html",
   },
   {
     title: "Your AI Feature Is Competing Against Doing Nothing",
     category: "Product Strategy",
     description:
-      "Most AI features lose to inertia, old habits, and workarounds unless they beat the path of least resistance.",
-    intensity: "high",
-    wordCount: 666,
+      "Even with better output, I watched people default to old habits when the switch felt costly.",
+    intensity: "low",
+    wordCount: 462,
     publishedDate: "Mar 19, 2026",
-    readTime: "4 min read",
+    readTime: "2 min read",
     link: "ai-feature-competing-against-doing-nothing.html",
   },
   {
     title: "“Good Enough” AI Beats “Perfect” AI",
     category: "Product Execution",
     description:
-      "In production, speed, reliability, and usefulness often matter more than chasing perfect model output.",
-    intensity: "medium",
-    wordCount: 648,
+      "I saw better output lose to faster, simpler results that kept people moving.",
+    intensity: "low",
+    wordCount: 299,
     publishedDate: "Mar 11, 2026",
-    readTime: "3 min read",
+    readTime: "1 min read",
     link: "good-enough-ai-beats-perfect-ai.html",
   },
   {
     title: "Personalization Is One of the Most Defensible Uses of AI",
     category: "Personalization",
     description:
-      "Generic AI output is getting commoditized. Personalization is where systems become truly useful and harder to replace.",
-    intensity: "medium",
-    wordCount: 687,
+      "Generic output felt replaceable to me. It got sticky only when the system adapted to my context and memory.",
+    intensity: "low",
+    wordCount: 359,
     publishedDate: "Feb 24, 2026",
-    readTime: "4 min read",
+    readTime: "2 min read",
     link: "personalization-defensible-ai.html",
   },
   {
     title: "Workflows First. Agents Second.",
     category: "Workflow Design",
     description:
-      "Most AI demos feel magical. You type something vague; the system figures out what to do.",
+      "I kept reaching for agents until slower responses and harder debugging pushed me back to workflows.",
     intensity: "low",
-    wordCount: 227,
+    wordCount: 191,
     publishedDate: "Feb 02, 2026",
-    readTime: "2 min read",
+    readTime: "1 min read",
     link: "workflows_first_agents_second.html",
   },
   {
     title: "AI Is Rarely the Product. It’s Usually the Cost Center.",
     category: "AI Economics",
-    description: "Most AI demos look impressive. In production, the costs and complexity show up first.",
-    intensity: "medium",
-    wordCount: 530,
+    description: "What looked magical in demos felt costly once latency, edge cases, and reliability showed up.",
+    intensity: "low",
+    wordCount: 424,
     publishedDate: "Jan 04, 2026",
-    readTime: "3 min read",
+    readTime: "2 min read",
     link: "ai_cost_center.html",
   },
 ];
@@ -383,17 +431,56 @@ function renderWritingGrid() {
     var readTime = calculateReadTime(post.wordCount, post.intensity) || post.readTime || "";
     var filterValue = tag.toLowerCase().replace(/\s+/g, "-");
     var metaHtml =
-      '<span class="writing-item__meta-cat">' + escapeHtml(tag) + "</span>" +
-      (publishedDate ? '<span class="writing-item__meta-sep" aria-hidden="true">•</span><span class="writing-item__meta-read">' + escapeHtml(publishedDate) + "</span>" : "") +
-      (readTime ? '<span class="writing-item__meta-sep" aria-hidden="true">•</span><span class="writing-item__meta-read">' + escapeHtml(readTime) + "</span>" : "");
+      '<span class="writing-item__meta-date">' + escapeHtml(publishedDate) + "</span>" +
+      '<span class="writing-item__meta-read">' + escapeHtml(readTime) + "</span>";
     return (
       '<article class="writing-item" data-filter="' + escapeHtml(filterValue) + '" data-link="' + escapeHtml(link) + '" tabindex="0" role="link" aria-label="' + escapeHtml(post.title) + '">' +
         '<div class="writing-item__card">' +
-          '<div class="writing-item__meta-row">' +
-            metaHtml +
+          '<div class="writing-item__header-row">' +
+            '<div class="writing-item__meta-row">' +
+              metaHtml +
+            "</div>" +
+            '<h3 class="writing-item__title"><a class="writing-item__title-link" href="' + escapeHtml(link) + '">' + escapeHtml(post.title) + "</a></h3>" +
+            '<span class="writing-item__tag-pill">' + escapeHtml(tag) + "</span>" +
           "</div>" +
-          '<h3 class="writing-item__title"><a class="writing-item__title-link" href="' + escapeHtml(link) + '">' + escapeHtml(post.title) + "</a></h3>" +
-          (post.description ? '<p class="writing-item__description">' + escapeHtml(post.description) + "</p>" : "") +
+        "</div>" +
+      "</article>"
+    );
+  }).join("");
+  grid.innerHTML = html;
+}
+
+function renderHomeJournalGrid() {
+  var grid = document.getElementById("homeJournalGrid");
+  if (!grid || !WRITING_POSTS.length) return;
+  var featuredLinks = [
+    "you-dont-have-an-ai-problem-you-have-a-workflow-problem.html",
+    "best-prompt-is-a-system-not-a-sentence.html",
+    "good-enough-ai-beats-perfect-ai.html",
+  ];
+  var featured = featuredLinks.map(function (link) {
+    return WRITING_POSTS.find(function (post) { return post.link === link; });
+  }).filter(Boolean);
+  if (!featured.length) return;
+
+  var html = featured.map(function (post) {
+    var link = post.link || "#";
+    var tag = post.category || "Essay / Opinion";
+    var publishedDate = post.publishedDate || "";
+    var readTime = calculateReadTime(post.wordCount, post.intensity) || post.readTime || "";
+    var metaHtml =
+      '<span class="writing-item__meta-date">' + escapeHtml(publishedDate) + "</span>" +
+      '<span class="writing-item__meta-read">' + escapeHtml(readTime) + "</span>";
+    return (
+      '<article class="writing-item" data-link="' + escapeHtml(link) + '" tabindex="0" role="link" aria-label="' + escapeHtml(post.title) + '">' +
+        '<div class="writing-item__card">' +
+          '<div class="writing-item__header-row">' +
+            '<div class="writing-item__meta-row">' +
+              metaHtml +
+            "</div>" +
+            '<h3 class="writing-item__title"><a class="writing-item__title-link" href="' + escapeHtml(link) + '">' + escapeHtml(post.title) + "</a></h3>" +
+            '<span class="writing-item__tag-pill">' + escapeHtml(tag) + "</span>" +
+          "</div>" +
         "</div>" +
       "</article>"
     );
@@ -679,6 +766,7 @@ function initFrameworkFilters() {
 
 function initProjectsPage() {
   renderProjectsGrid();
+  renderHomeJournalGrid();
   // Temporarily disabling tab filters; keep all cards visible.
   var cta = document.getElementById("viewAllProjectsCta");
   if (cta) {
@@ -687,6 +775,25 @@ function initProjectsPage() {
     if (isHome) {
       cta.style.display = PROJECTS.length > 3 ? "inline-block" : "none";
     }
+  }
+  var homeJournalGrid = document.getElementById("homeJournalGrid");
+  if (homeJournalGrid) {
+    homeJournalGrid.addEventListener("click", function (e) {
+      var card = e.target && e.target.closest ? e.target.closest(".writing-item[data-link]") : null;
+      if (!card) return;
+      if (e.target && e.target.closest && e.target.closest("a")) return;
+      var href = card.getAttribute("data-link") || "";
+      if (href) window.location.href = href;
+    });
+    homeJournalGrid.addEventListener("keydown", function (e) {
+      var card = e.target && e.target.closest ? e.target.closest(".writing-item[data-link]") : null;
+      if (!card) return;
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        var href = card.getAttribute("data-link") || "";
+        if (href) window.location.href = href;
+      }
+    });
   }
 }
 function initFrameworksPage() {
