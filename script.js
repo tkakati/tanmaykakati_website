@@ -526,11 +526,7 @@ function renderHeroWithMotion() {
         h(
           "p",
           { className: "hero__about hero__about--lines", id: "heroAbout2", style: { opacity: 1 } },
-          "→ Exploring how AI systems decide and how we decide about them.",
-          h("br"),
-          "→ Focused on solving messy problems and making sound tradeoffs.",
-          h("br"),
-          "→ Building product systems that are useful and usable."
+          "Lately, I spend time thinking about how AI outputs become decisions people can trust and act on, and building systems that go beyond quick, one-off solutions."
         )
       )
     )
