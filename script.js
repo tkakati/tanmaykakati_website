@@ -127,7 +127,7 @@ const PROJECTS = [
   },
   {
     id: "complete-comedy-quiz",
-    title: "Complete Comedy Quiz",
+    title: "LLM workflow based Quiz app",
     category: "AI",
     summary:
       "An AI-powered quiz engine that generates dynamic comedy questions across formats. Designed for engagement, replayability, and fast content creation.",
